@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PrintCraft – Materials</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main: #1abc9c;
+      --cta: #ff7f32;
+      --cta-hover: #f46a15;
+      --mat-blue: #1e7189;
+      --border: #c6e4ea;
+    }
+    body {
+      font-family: 'Inter',sans-serif;
+      margin:0;
+      background: #fafbfc;
+      color: #182133;
+    }
+    header {
+      background:#fff;
+      box-shadow:0 2px 18px rgba(17,50,56,0.10);
+      border-radius:18px;
+      margin:18px auto 0 auto;
+      max-width:1080px;
+      padding:0 24px;
+      display:flex;align-items:center;justify-content:space-between;
+      min-height:76px;
+    }
+    .brand { font-size:2rem; font-weight:700; color:#1abc9c; display:flex; align-items:center; text-decoration:none;}
+    nav { display:flex; gap:18px; align-items:center; font-size:1.09rem;} /* Tighter gap */
+    nav a { color:#21293a; text-decoration:none; font-weight:500;}
+    nav a:hover { color:var(--main);}
+    .get-started-btn {background:#ff7f32;color:#fff;border:none;border-radius:8px;padding:8px 23px;font-weight:700;font-size:1.13rem;cursor:pointer;transition:background .16s;}
+    .get-started-btn:hover { background: var(--cta-hover); }
+    .cart-icon {
+      background: #e3f5f5;
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; margin-left: 10px; transition: box-shadow 0.15s;
+    }
+    .cart-icon svg { width: 24px; height: 24px;}
+    .profile-avatar {
+      background: #e3f5f5;
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; margin-left: 10px; transition: box-shadow 0.15s;
+    }
+    .profile-avatar svg {width:27px;height:27px;fill:#18787c;}
+    .profile-dropdown {
+      position:absolute; top:70px; right:42px; background:#fff; border-radius:11px; box-shadow:0 2px 18px rgba(17,50,56,0.13); min-width:183px; z-index:99; display:none; flex-direction:column;
+    }
+    .profile-dropdown a {
+      color:#222; text-decoration:none; font-weight:500; font-size:1.09em; padding:15px 21px; transition:background .14s;
+    }
+    .profile-dropdown a:hover { background:#f2f7f7;}
+    .mat-wrap { max-width:930px; margin:48px auto 0 auto;}
+    .mat-header {
+      background: var(--mat-blue);
+      color: #fff;
+      padding: 24px 0 17px 0;
+      font-size:2.12rem;
+      font-weight:800;
+      text-align: center;
+      border-radius: 12px 12px 0 0;
+      letter-spacing: -1px;
+      box-shadow: 0 2px 14px rgba(18,38,60,.06);
+    }
+    .mat-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 34px;
+      background: #f7fafb;
+      border-radius: 0 0 12px 12px;
+      padding: 36px 23px 26px 23px;
+      box-shadow: 0 2px 14px rgba(18,38,60,.06);
+    }
+    @media (max-width:900px){
+      .mat-wrap{padding:0 7px;}
+      .mat-grid{grid-template-columns:1fr;}
+    }
+    .mat-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 27px 24px 18px 24px;
+      box-shadow: 0 2px 10px rgba(26,188,156,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+    .mat-title {
+      font-size:1.32rem;
+      font-weight:800;
+      color: var(--main);
+      margin-bottom: 5px;
+    }
+    .mat-desc {
+      font-size: 1.08rem;
+      color: #182133;
+      line-height: 1.58;
+    }
+    .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap;}
+    .footer-links a { color: #377569; text-decoration: none; font-weight: 500;}
+    .footer-links a:hover { text-decoration: underline;}
+    .footer-social a { color: #119e8f; font-size: 1.15rem; margin-left: 12px; text-decoration: none;}
+    .footer-social a:hover { color: #15b6a4;}
+    footer { background: #fff; margin-top: 42px; padding: 17px 9px 12px 9px; font-size: 1rem; color: #476360; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #e6ebe8; gap: 10px; max-width: 1000px; margin-left:auto; margin-right:auto; border-radius: 0 0 14px 14px;}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="welcome.html" class="brand" style="text-decoration:none;">
+      <span style="display:inline-block;vertical-align:middle;margin-right:13px;">
+        <!-- Logo SVG -->
+        <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+          <path d="M12 14L24 8L36 14V28L24 34L12 28V14Z" fill="#1ABC9C" stroke="#0F4C5C" stroke-width="2"/>
+          <path d="M12 14L24 20L24 34L12 28V14Z" fill="#22B9AD" stroke="#0F4C5C" stroke-width="2"/>
+          <path d="M36 14L24 20L24 34L36 28V14Z" fill="#169E8C" stroke="#0F4C5C" stroke-width="2"/>
+        </svg>
+      </span>
+      PrintCraft
+    </a>
+    <nav>
+      <a href="materials.html">Materials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html" style="margin-left:20px;"><button class="get-started-btn">Get Started</button></a>
+      <!-- Orange Cart Icon -->
+      <a href="cart.html" class="cart-icon" title="Cart">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+          <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+          <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+          <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+        </svg>
+      </a>
+      <span class="profile-avatar" id="profileBtn" title="Profile">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+      </span>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html">My Profile</a>
+        <a href="orders.html">My Orders</a>
+        <a href="#" onclick="logout();return false;">Log Out</a>
+      </div>
+    </nav>
+  </header>
+  <div class="mat-wrap">
+    <div class="mat-header">Materials</div>
+    <div class="mat-grid">
+      <div class="mat-card">
+        <div class="mat-title">PLA</div>
+        <div class="mat-desc">
+          PLA (Polylactic Acid) is our most beginner-friendly filament, thanks to its low printing temperature and minimal warping.<br>
+          It produces crisp detail and a smooth, matte finish, making it ideal for decorative pieces, prototypes, and hobby models.<br>
+          Because PLA is derived from cornstarch, it’s biodegradable and emits a sweet, non-toxic aroma during printing.<br>
+          It’s stiff but somewhat brittle, so it’s best reserved for display items or low-stress parts rather than functional hinges or load-bearing uses.<br>
+          PLA doesn’t tolerate high heat—avoid outdoor use or any application above ~60°C without additional coatings.
+        </div>
+      </div>
+      <div class="mat-card">
+        <div class="mat-title">PETG</div>
+        <div class="mat-desc">
+          PETG (Polyethylene Terephthalate Glycol) strikes a great balance between ease of printing and mechanical strength.<br>
+          It offers excellent layer adhesion and chemical resistance, making it a go-to for beverage containers, mechanical parts, and functional prototypes.<br>
+          PETG’s slightly glossy surface brings out vibrant colors, and it’s less brittle than PLA—so your prints can flex rather than snap.<br>
+          You may see a bit more stringing or oozing, but that can be dialed out with fine-tuned retraction settings.<br>
+          Its tolerance to moisture makes it suitable for parts exposed to humidity, though you should still store it in a sealed container.
+        </div>
+      </div>
+      <div class="mat-card">
+        <div class="mat-title">ABS</div>
+        <div class="mat-desc">
+          ABS (Acrylonitrile Butadiene Styrene) is prized for its toughness, heat resistance, and impact strength.<br>
+          It’s the classic choice for functional parts, automotive components, and engineering prototypes that need to withstand higher temperatures.<br>
+          ABS does tend to warp, so you’ll get the best results with a heated bed (≥ 100°C) and, ideally, an enclosed printer.<br>
+          Its slightly flexible nature means ABS parts can endure stress better than PLA, and you can sand or acetone-vapor finish them for a glossy, professional look.<br>
+          Note that ABS emits stronger fumes while printing, so good ventilation or an enclosure with filtration is strongly recommended.
+        </div>
+      </div>
+      <div class="mat-card">
+        <div class="mat-title">Nylon</div>
+        <div class="mat-desc">
+          Nylon filament brings exceptional toughness, abrasion resistance, and dimensional stability to demanding applications.<br>
+          It’s perfect for gears, bearings, living hinges, and any part that needs to flex repeatedly without cracking.<br>
+          Nylon can be a bit tricky—it loves to absorb moisture from the air, so you should dry it before printing and store it in airtight bags with desiccant.<br>
+          With a higher printing temperature (usually 250–270°C) and a well-calibrated first layer, you’ll get beautifully strong parts.<br>
+          Its slightly silky sheen and natural flexibility make Nylon a top pick for tools, jigs, and mechanical assemblies that need to last.
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-links">
+      <a href="materials.html">Materials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="Privacy%20Policy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" title="Facebook">🔵</a>
+      <a href="#" title="Twitter">🐦</a>
+      <a href="#" title="Instagram">📸</a>
+    </div>
+  </footer>
+  <script>
+    // Profile dropdown logic
+    const btn = document.getElementById('profileBtn');
+    const dropdown = document.getElementById('profileDropdown');
+    btn.onclick = function(e){
+      dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+      dropdown.style.flexDirection = 'column';
+      e.stopPropagation();
+    };
+    window.addEventListener('click',()=>dropdown.style.display='none');
+    dropdown.onclick = e=>e.stopPropagation();
+    function logout() { alert('Logged out! (This is just a demo.)'); }
+  </script>
+</body>
+</html>

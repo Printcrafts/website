@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PrintCraft – Upload & Quote</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --main: #1abc9c; --cta: #ff7f32; --cta-hover: #f46a15; --bg: #f8f9fa; --border: #e2eff2;}
+    body { font-family: 'Inter',sans-serif; margin:0; background: var(--bg); color: #182133; }
+    header {
+      background:#fff; box-shadow:0 2px 18px rgba(17,50,56,0.10); border-radius:18px;
+      margin:18px auto 0 auto; max-width:1080px; padding:0 24px;
+      display:flex;align-items:center;justify-content:space-between; min-height:76px;
+    }
+    .brand { font-size:2rem; font-weight:700; color:#1abc9c; display:flex; align-items:center; text-decoration:none;}
+    nav { display:flex; gap:18px; align-items:center; font-size:1.09rem;}
+    nav a { color:#21293a; text-decoration:none; font-weight:500;}
+    nav a:hover { color:var(--main);}
+    .get-started-btn {background:#ff7f32;color:#fff;border:none;border-radius:8px;padding:8px 23px;font-weight:700;font-size:1.13rem;cursor:pointer;transition:background .16s;}
+    .get-started-btn:hover { background: var(--cta-hover);}
+    .cart-icon {
+      background: #e3f5f5;
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; margin-left: 10px; transition: box-shadow 0.15s;
+    }
+    .cart-icon svg { width: 24px; height: 24px;}
+    .profile-avatar { background:#e3f5f5;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:10px;transition:box-shadow 0.15s;}
+    .profile-avatar svg {width:27px;height:27px;fill:#18787c;}
+    .profile-dropdown {
+      position:absolute; top:70px; right:42px; background:#fff; border-radius:11px; box-shadow:0 2px 18px rgba(17,50,56,0.13); min-width:183px; z-index:99; display:none; flex-direction:column;
+    }
+    .profile-dropdown a {
+      color:#222; text-decoration:none; font-weight:500; font-size:1.09em; padding:15px 21px; transition:background .14s;
+    }
+    .profile-dropdown a:hover { background:#f2f7f7;}
+    .main-wrap { max-width:1080px; margin:38px auto 0 auto; display:grid; grid-template-columns:1.15fr 1fr; gap:32px;}
+    @media (max-width:980px){ .main-wrap{grid-template-columns:1fr;} }
+    .upload-panel, .quote-panel { background:#fff; border-radius:16px; box-shadow:0 2px 16px rgba(17,50,56,0.09); padding:36px 35px 33px 35px; }
+    .upload-panel { min-width:330px; }
+    .panel-title { font-size:2.18rem; font-weight:800; margin-bottom:9px; letter-spacing:-1px;}
+    .panel-desc { color: #1abc9c; font-size:1.15rem; margin-bottom:27px;}
+    .upload-zone {
+      border:2px dashed #d2e5e3; border-radius:15px; height:112px; display:flex;align-items:center;justify-content:center;margin-bottom:15px;
+      background:#fafbfc;
+    }
+    .upload-zone label { display:block; width:100%; height:100%; cursor:pointer; text-align:center;}
+    .upload-zone input[type=file] { display:none; }
+    .upload-zone p { color:#888; font-size:1.18rem;}
+    .upload-zone span { color:#1abc9c; font-weight:700; }
+    .file-limits {
+      font-size:1.01em; color:#ba6a0c; background: #fff5eb; border: 1.2px solid #ffd5b7; border-radius:7px; padding:8px 14px 8px 14px; margin-bottom:23px; text-align:center;
+    }
+    .mat-list, .color-list { margin:16px 0 19px 0; display:flex;flex-wrap:wrap; gap:12px;}
+    .mat-radio, .color-checkbox {display:flex;align-items:center;}
+    .mat-radio input[type=radio], .color-checkbox input[type=checkbox] { margin-right:7px;}
+    .mat-radio label, .color-checkbox label { font-size:1.05em;}
+    .color-dot {
+      display:inline-block;width:17px;height:17px;border-radius:50%;border:2px solid #d1d1d1;margin-right:6px;vertical-align:middle;
+    }
+    .quote-panel { min-width:270px;}
+    .q-title { font-size:1.53rem; font-weight:800; margin-bottom:17px;}
+    .q-table {width:100%;font-size:1.11em;line-height:1.56;}
+    .q-table td{padding:3px 0;}
+    .q-total-row {font-size:1.26em;font-weight:800;}
+    .q-total-row td:last-child {color:#ff7f32;}
+    .checkout-btn {background:#ff7f32;color:#fff;border:none;border-radius:8px;width:100%;font-weight:700;font-size:1.19rem;padding:13px 0;margin-top:24px;cursor:pointer;transition:background .14s;}
+    .checkout-btn:hover {background:#f46a15;}
+    .support-label {font-size:1.06em;display:flex;align-items:center;margin-top:10px;margin-bottom:7px;}
+    .support-label input[type=checkbox]{margin-right:6px;}
+    .color-detail {font-size:0.97em;color:#888;}
+    @media(max-width:980px){.main-wrap{padding:0 8px;}}
+    @media(max-width:700px){
+      .main-wrap{grid-template-columns:1fr;padding:0 2px;}
+      .upload-panel,.quote-panel{padding:22px 6vw 22px 6vw;}
+      .panel-title{font-size:1.28rem;}
+    }
+    .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap;}
+    .footer-links a { color: #377569; text-decoration: none; font-weight: 500;}
+    .footer-links a:hover { text-decoration: underline;}
+    .footer-social a { color: #119e8f; font-size: 1.15rem; margin-left: 12px; text-decoration: none;}
+    .footer-social a:hover { color: #15b6a4;}
+    footer { background: #fff; margin-top: 42px; padding: 17px 9px 12px 9px; font-size: 1rem; color: #476360; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #e6ebe8; gap: 10px; max-width: 1000px; margin-left:auto; margin-right:auto; border-radius: 0 0 14px 14px;}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="welcome.html" class="brand" style="text-decoration:none;">
+      <span style="display:inline-block;vertical-align:middle;margin-right:13px;">
+        <!-- Logo SVG -->
+        <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+          <path d="M12 14L24 8L36 14V28L24 34L12 28V14Z" fill="#1ABC9C" stroke="#0F4C5C" stroke-width="2"/>
+          <path d="M12 14L24 20L24 34L12 28V14Z" fill="#22B9AD" stroke="#0F4C5C" stroke-width="2"/>
+          <path d="M36 14L24 20L24 34L36 28V14Z" fill="#169E8C" stroke="#0F4C5C" stroke-width="2"/>
+        </svg>
+      </span>
+      PrintCraft
+    </a>
+    <nav>
+      <a href="materials.html">Materials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html" style="margin-left:20px;">
+        <button class="get-started-btn">Get Started</button>
+      </a>
+      <!-- Orange Cart Icon -->
+      <a href="cart.html" class="cart-icon" title="Cart">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+          <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+          <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+          <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+        </svg>
+      </a>
+      <span class="profile-avatar" id="profileBtn" title="Profile">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+      </span>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html">My Profile</a>
+        <a href="orders.html">My Orders</a>
+        <a href="#" onclick="logout();return false;">Log Out</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="main-wrap">
+    <form class="upload-panel" onsubmit="return false;">
+      <div class="panel-title">Upload Your 3D File</div>
+      <div class="panel-desc">Pay per gram of filament + color + support + multicolor fees</div>
+      <div class="upload-zone">
+        <label>
+          <input type="file" id="uploadInput" accept=".obj" />
+          <p id="fileLabel">Drag &amp; drop or click to upload</p>
+        </label>
+      </div>
+      <div class="file-limits">
+        Only accepts <b>.obj</b> files. Max build size: <b>250 × 250 × 250 mm</b>
+      </div>
+      <div class="mat-section">
+        <div style="font-weight:600;margin-bottom:8px;">Material</div>
+        <div class="mat-list" id="matList"></div>
+      </div>
+      <div class="color-section">
+        <div style="font-weight:600;margin-bottom:8px;">Colors (up to 4)</div>
+        <div class="color-list" id="colorList"></div>
+      </div>
+      <label class="support-label">
+        <input type="checkbox" id="supportCheckbox"> Would you like us to remove support? <span style="color:#ff7f32;margin-left:6px;">+$5.00</span>
+      </label>
+    </form>
+    <div class="quote-panel">
+      <div class="q-title">Pricing</div>
+      <table class="q-table">
+        <tr><td><b>Material</b></td><td id="qMaterial"></td></tr>
+        <tr><td><b>Filament Usage</b></td><td id="qGrams"></td></tr>
+        <tr><td><b>Color Adjustment</b></td><td id="qColorAdj"></td></tr>
+        <tr><td class="color-detail" id="qColorDetails" colspan="2"></td></tr>
+        <tr><td><b>Support Removal</b></td><td id="qSupportFee"></td></tr>
+        <tr><td><b>Multicolor Fee</b></td><td id="qMultiFee"></td></tr>
+        <tr class="q-total-row"><td>Total</td><td id="qTotal"></td></tr>
+      </table>
+      <button class="checkout-btn" onclick="window.location.href='checkout.html'">Checkout</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="materials.html">Materials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="Privacy%20Policy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" title="Facebook">🔵</a>
+      <a href="#" title="Twitter">🐦</a>
+      <a href="#" title="Instagram">📸</a>
+    </div>
+  </footer>
+  <script>
+    // Materials & Colors
+    const materials = [
+      { name: "PLA", rate: 0.12 },
+      { name: "PETG", rate: 0.16 },
+      { name: "ABS", rate: 0.14 },
+      { name: "Nylon", rate: 0.20 }
+    ];
+    const colors = [
+      { name: "Gray", surcharge: 0, color: "#a2a9b2" },
+      { name: "Red", surcharge: 0.02, color: "#e05048" },
+      { name: "White", surcharge: 0, color: "#eee" },
+      { name: "Black", surcharge: 0, color: "#111" },
+      { name: "Orange", surcharge: 0, color: "#f8b548" },
+      { name: "Yellow", surcharge: 0.01, color: "#e6d349" },
+      { name: "Blue", surcharge: 0, color: "#4686e4" },
+      { name: "Green", surcharge: 0.01, color: "#32c271" },
+      { name: "Pink", surcharge: 0, color: "#e087cb" },
+      { name: "Purple", surcharge: 0, color: "#9574cf" },
+      { name: "Teal", surcharge: 0.02, color: "#00b7b7" }
+    ];
+    // Render Material Radios
+    const matList = document.getElementById('matList');
+    materials.forEach((mat,i)=>{
+      const id = `mat_${i}`;
+      matList.insertAdjacentHTML('beforeend',`
+        <div class="mat-radio">
+          <input type="radio" name="material" id="${id}" value="${mat.name}" ${i===0?'checked':''}>
+          <label for="${id}">${mat.name}<span style="color:#888;font-size:0.98em;margin-left:3px;">$${mat.rate.toFixed(2)}/g</span></label>
+        </div>
+      `);
+    });
+    // Render Color Checkboxes (max 4)
+    const colorList = document.getElementById('colorList');
+    colors.forEach((col,i)=>{
+      const id = `color_${i}`;
+      colorList.insertAdjacentHTML('beforeend',`
+        <div class="color-checkbox">
+          <input type="checkbox" name="color" id="${id}" value="${col.name}">
+          <label for="${id}">
+            <span class="color-dot" style="background:${col.color}"></span>
+            ${col.name}${col.surcharge>0?`<span style="color:#f46a15;"> (+$${col.surcharge.toFixed(2)}/g)</span>`:''}
+          </label>
+        </div>
+      `);
+    });
+    // State
+    let selectedMaterial = materials[0];
+    let selectedColors = [];
+    let grams = 25;
+    let support = false;
+    // File upload (simulated grams)
+    document.getElementById('uploadInput').addEventListener('change',e=>{
+      const file = e.target.files[0];
+      if(file){
+        document.getElementById('fileLabel').innerHTML = `Uploaded: <em>${file.name}</em>`;
+        grams = 25; // For now, hardcoded
+        updateQuote();
+      }
+    });
+    // Material change
+    matList.addEventListener('change', e=>{
+      if(e.target.name==="material"){
+        selectedMaterial = materials.find(m=>m.name===e.target.value);
+        updateQuote();
+      }
+    });
+    // Color change (max 4)
+    colorList.addEventListener('change', e=>{
+      if(e.target.name==="color"){
+        let boxes = Array.from(colorList.querySelectorAll('input[type=checkbox]'));
+        let checked = boxes.filter(box=>box.checked);
+        if(checked.length>4){
+          e.target.checked = false;
+          return;
+        }
+        selectedColors = checked.map(box=>colors.find(c=>c.name===box.value));
+        updateQuote();
+      }
+    });
+    // Support checkbox
+    document.getElementById('supportCheckbox').addEventListener('change', e=>{
+      support = !!e.target.checked;
+      updateQuote();
+    });
+    // Update Quote
+    function updateQuote(){
+      // Material
+      document.getElementById('qMaterial').innerText = `${selectedMaterial.name} ($${selectedMaterial.rate.toFixed(2)}/g)`;
+      document.getElementById('qGrams').innerText = `${grams} gram`;
+      // Color Adjustment
+      let colorAdj = selectedColors.reduce((sum,c)=>sum+(c.surcharge*grams),0);
+      document.getElementById('qColorAdj').innerText = `$${colorAdj.toFixed(2)}`;
+      // Color details
+      document.getElementById('qColorDetails').innerHTML = selectedColors.map(c=>
+        c.surcharge?`${c.name} <span style="color:#666;">${(c.surcharge*grams).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</span>`:''
+      ).filter(Boolean).join('<br>');
+      // Support Fee
+      let supportFee = support?5:0;
+      document.getElementById('qSupportFee').innerText = "$"+supportFee.toFixed(2);
+      // Multi-color fee (if >1 color)
+      let multiFee = selectedColors.length>1?3:0;
+      document.getElementById('qMultiFee').innerText = "$"+multiFee.toFixed(2);
+      // Total (shipping removed)
+      let base = grams*selectedMaterial.rate;
+      let total = base + colorAdj + supportFee + multiFee;
+      document.getElementById('qTotal').innerText = "$"+total.toFixed(2);
+    }
+    updateQuote();
+
+    // Profile dropdown logic
+    const btn = document.getElementById('profileBtn');
+    const dropdown = document.getElementById('profileDropdown');
+    btn.onclick = function(e){
+      dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+      dropdown.style.flexDirection = 'column';
+      e.stopPropagation();
+    };
+    window.addEventListener('click',()=>dropdown.style.display='none');
+    dropdown.onclick = e=>e.stopPropagation();
+    function logout() { alert('Logged out! (This is just a demo.)'); }
+  </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PrintCraft – Welcome</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main: #1abc9c;
+      --cta: #ff7f32;
+      --cta-hover: #f46a15;
+      --bg: #f8f9fa;
+      --dark: #163447;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--dark);
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 18px rgba(17,50,56,0.10);
+      border-radius: 18px;
+      margin: 18px auto 0 auto;
+      max-width: 1080px;
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 76px;
+    }
+    .brand {
+      font-size: 2rem; font-weight: 700; color: #1abc9c;
+      display: flex; align-items: center; text-decoration: none;
+    }
+    nav { display: flex; gap: 32px; align-items: center; font-size: 1.09rem; }
+    nav a { color: #21293a; text-decoration: none; font-weight: 500; }
+    nav a:hover { color: var(--main); }
+    .get-started-btn {
+      background: var(--cta); color: #fff; border: none; border-radius: 8px;
+      padding: 8px 23px; font-weight: 700; font-size: 1.13rem;
+      cursor: pointer; transition: background .16s;
+    }
+    .get-started-btn:hover { background: var(--cta-hover); }
+
+    .icons-bar {
+      display: flex;
+      gap: 10px; /* Tighter spacing between cart/profile */
+      align-items: center;
+      margin-left: 18px;
+    }
+    .cart-icon {
+      background: #e3f5f5;
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; /* margin-left removed */
+      transition: box-shadow 0.15s;
+    }
+    .cart-icon svg {
+      width: 24px; height: 24px;
+    }
+    .profile-avatar {
+      background: #e3f5f5;
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      /* margin-left removed for tighter spacing */
+      transition: box-shadow 0.15s;
+    }
+    .profile-avatar svg {
+      width: 27px; height: 27px; fill: #18787c;
+    }
+    .profile-dropdown {
+      position: absolute; top: 70px; right: 42px; background: #fff;
+      border-radius: 11px; box-shadow: 0 2px 18px rgba(17,50,56,0.13);
+      min-width: 183px; z-index: 99; display: none; flex-direction: column;
+    }
+    .profile-dropdown a {
+      color: #222; text-decoration: none; font-weight: 500; font-size: 1.09em;
+      padding: 15px 21px; transition: background .14s;
+    }
+    .profile-dropdown a:hover { background: #f2f7f7; }
+    .hero-bg {
+      min-height: 440px;
+      background: linear-gradient(102deg, #ecfaf8 0%, #eaf5ff 100%);
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(17,50,56,0.09);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      margin: 36px auto 0 auto;
+      max-width: 1040px;
+      position: relative;
+      padding: 56px 12px 42px 12px;
+    }
+    .hero-bg:before {
+      content: "";
+      position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=cover&w=1200&q=80') center/cover no-repeat;
+      opacity: 0.09;
+      border-radius: 16px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-content { position: relative; z-index: 1; text-align: center; }
+    .hero-headline {
+      font-size: 2.8rem; font-weight: 800; color: var(--dark); margin-bottom: 14px; letter-spacing: -1px;
+    }
+    .hero-sub {
+      font-size: 1.32rem; color: #188b89; margin-bottom: 34px; font-weight: 500;
+    }
+    .hero-cta {
+      display: flex; justify-content: center; gap: 18px; margin-bottom: 13px;
+    }
+    .benefits-bar {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+      margin: 50px auto 0 auto; max-width: 940px;
+      text-align: center;
+    }
+    .benefit-card {
+      background: #fff; border-radius: 12px; padding: 28px 14px 23px 14px; box-shadow: 0 2px 12px rgba(17,50,56,0.08);
+      font-size: 1.08rem;
+    }
+    .benefit-title {
+      color: #1abc9c; font-weight: 700; font-size: 1.15em; margin-bottom: 8px;
+    }
+    .section-wrap { max-width: 940px; margin: 48px auto 0 auto; }
+    .about-card, .how-card {
+      background: #fff; border-radius: 14px; box-shadow: 0 2px 14px rgba(18,38,60,.10);
+      padding: 38px 32px 33px 32px; margin-bottom: 28px;
+    }
+    .about-head {
+      font-size: 1.42rem; font-weight: 700; color: #1abc9c; margin-bottom: 12px;
+    }
+    .how-title {
+      font-size: 1.32rem; font-weight: 700; color: #1abc9c; margin-bottom: 18px;
+    }
+    .how-steps {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 25px;
+    }
+    .how-step {
+      background: #f7fafc; border-radius: 9px; padding: 21px 15px 19px 15px;
+      box-shadow: 0 2px 7px rgba(26,188,156,0.07); text-align: center;
+      font-size: 1.07rem;
+    }
+    .how-step .num {
+      background: #1abc9c; color: #fff; font-size: 1.13rem; font-weight: bold;
+      display: inline-block; border-radius: 50%; width: 33px; height: 33px; line-height: 33px; margin-bottom: 7px;
+    }
+    .final-cta {
+      background: #fafdff; border-radius: 14px; box-shadow: 0 2px 12px rgba(17,50,56,0.07);
+      margin: 54px auto 0 auto; max-width: 820px; text-align: center; padding: 36px 8px 28px 8px;
+    }
+    .final-cta .heading {
+      font-size: 1.58rem; font-weight: 800; color: var(--main); margin-bottom: 18px;
+    }
+    .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap;}
+    .footer-links a { color: #377569; text-decoration: none; font-weight: 500;}
+    .footer-links a:hover { text-decoration: underline;}
+    .footer-social a { color: #119e8f; font-size: 1.15rem; margin-left: 12px; text-decoration: none;}
+    .footer-social a:hover { color: #15b6a4;}
+    footer { background: #fff; margin-top: 42px; padding: 17px 9px 12px 9px; font-size: 1rem; color: #476360; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #e6ebe8; gap: 10px; max-width: 1000px; margin-left:auto; margin-right:auto; border-radius: 0 0 14px 14px;}
+    @media (max-width:1000px){
+      .hero-bg, .section-wrap, .benefits-bar { max-width: 97vw; }
+    }
+    @media (max-width:800px){
+      .benefits-bar { grid-template-columns:1fr; gap:17px;}
+      .how-steps { grid-template-columns:1fr;}
+    }
+    @media (max-width:600px){
+      .hero-bg {padding:37px 3vw 33px 3vw;}
+      .about-card, .how-card {padding:19px 2vw;}
+      .final-cta {padding: 21px 3vw 21px 3vw;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="welcome.html" class="brand" style="text-decoration:none;">
+      <span style="display:inline-block;vertical-align:middle;margin-right:13px;">
+        <!-- Logo SVG -->
+        <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+          <path d="M12 14L24 8L36 14V28L24 34L12 28V14Z" fill="#1ABC9C" stroke="#0F4C5C" stroke-width="2"/>
+          <path d="M12 14L24 20L24 34L12 28V14Z" fill="#22B9AD" stroke="#0F4C5C" stroke-width="2"/>
+          <path d="M36 14L24 20L24 34L36 28V14Z" fill="#169E8C" stroke="#0F4C5C" stroke-width="2"/>
+        </svg>
+      </span>
+      PrintCraft
+    </a>
+    <nav>
+      <a href="materials.html">Materials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html" style="margin-left:20px;">
+        <button class="get-started-btn">Get Started</button>
+      </a>
+      <span class="icons-bar">
+        <!-- Orange Cart Icon -->
+        <a href="cart.html" class="cart-icon" title="Cart">
+          <svg viewBox="0 0 24 24">
+            <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+            <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+            <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+          </svg>
+        </a>
+        <span class="profile-avatar" id="profileBtn" title="Profile">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+        </span>
+      </span>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html">My Profile</a>
+        <a href="orders.html">My Orders</a>
+        <a href="#" onclick="logout();return false;">Log Out</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="hero-bg">
+    <div class="hero-content">
+      <div class="hero-headline">
+        PrintCraft: Precision 3D Printing, Priced by the Gram
+      </div>
+      <div class="hero-sub">
+        Upload your design → we’ll validate it → we print &amp; ship
+      </div>
+      <div class="hero-cta">
+        <a href="index.html"><button class="get-started-btn">Upload Your File</button></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="benefits-bar">
+    <div class="benefit-card">
+      <div class="benefit-title">Pay-as-You-Go</div>
+      No minimums—only pay for what you use
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-title">Rapid Turnaround</div>
+      Prints in days, shipped fast
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-title">Printability Check</div>
+      We’ll flag unprintable files so you can fix them free of charge
+    </div>
+  </div>
+
+  <div class="section-wrap">
+    <div class="about-card">
+      <div class="about-head">Our Story</div>
+      <div>
+        PrintCraft was founded to bring transparent, on-demand 3D printing to hobbyists and pros alike. We believe you should only pay for what you use—and never for mistakes you didn’t make. That’s why every file is pre-checked for printability. If there’s an issue, we’ll let you know so you can correct it at no extra cost.
+      </div>
+    </div>
+    <div class="how-card">
+      <div class="how-title">How It Works</div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="num">1</div>
+          <b>Upload Your File</b>
+          <br>
+          <span>OBJ—just drag &amp; drop.</span>
+        </div>
+        <div class="how-step">
+          <div class="num">2</div>
+          <b>File Validation &amp; Pricing</b>
+          <br>
+          <span>Instant gram-based pricing plus a free pre-print check.</span>
+        </div>
+        <div class="how-step">
+          <div class="num">3</div>
+          <b>We Print &amp; Ship</b>
+          <br>
+          <span>Built with care. Delivered on time.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <div class="heading">Ready to Turn Your Design into Reality?</div>
+    <a href="index.html"><button class="get-started-btn" style="font-size:1.25em;padding:14px 38px;">Get Started</button></a>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="materials.html">Materials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="Privacy%20Policy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" title="Facebook">🔵</a>
+      <a href="#" title="Twitter">🐦</a>
+      <a href="#" title="Instagram">📸</a>
+    </div>
+  </footer>
+
+  <script>
+    // Profile dropdown logic
+    const btn = document.getElementById('profileBtn');
+    const dropdown = document.getElementById('profileDropdown');
+    btn.onclick = function(e){
+      dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+      dropdown.style.flexDirection = 'column';
+      e.stopPropagation();
+    };
+    window.addEventListener('click',()=>dropdown.style.display='none');
+    dropdown.onclick = e=>e.stopPropagation();
+    function logout() { alert('Logged out! (This is just a demo.)'); }
+  </script>
+</body>
+</html>

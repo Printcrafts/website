@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PrintCraft – FAQ</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main: #1abc9c;
+      --cta: #ff7f32;
+      --cta-hover: #f46a15;
+      --faq-blue: #1e7189;
+    }
+    body {
+      font-family: 'Inter',sans-serif;
+      margin:0;
+      background: #fafbfc;
+      color: #182133;
+    }
+    header {
+      background:#fff;
+      box-shadow:0 2px 18px rgba(17,50,56,0.10);
+      border-radius:18px;
+      margin:18px auto 0 auto;
+      max-width:1080px;
+      padding:0 24px;
+      display:flex;align-items:center;justify-content:space-between;
+      min-height:76px;
+    }
+    .brand { font-size:2rem; font-weight:700; color:#1abc9c; display:flex; align-items:center; text-decoration:none;}
+    nav { display:flex; gap:18px; align-items:center; font-size:1.09rem;} /* Tighter gap */
+    nav a { color:#21293a; text-decoration:none; font-weight:500;}
+    nav a:hover { color:var(--main);}
+    .get-started-btn {background:#ff7f32;color:#fff;border:none;border-radius:8px;padding:8px 23px;font-weight:700;font-size:1.13rem;cursor:pointer;transition:background .16s;}
+    .get-started-btn:hover { background: var(--cta-hover); }
+    .cart-icon {
+      background: #e3f5f5;
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; margin-left: 10px; transition: box-shadow 0.15s; /* Reduced */
+    }
+    .cart-icon svg { width: 24px; height: 24px;}
+    .profile-avatar {
+      background: #e3f5f5;
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; margin-left: 10px; transition: box-shadow 0.15s; /* Reduced */
+    }
+    .profile-avatar svg {width:27px;height:27px;fill:#18787c;}
+    .profile-dropdown {
+      position:absolute; top:70px; right:42px; background:#fff; border-radius:11px; box-shadow:0 2px 18px rgba(17,50,56,0.13); min-width:183px; z-index:99; display:none; flex-direction:column;
+    }
+    .profile-dropdown a {
+      color:#222; text-decoration:none; font-weight:500; font-size:1.09em; padding:15px 21px; transition:background .14s;
+    }
+    .profile-dropdown a:hover { background:#f2f7f7;}
+    .faq-wrap { max-width:700px; margin:44px auto 0 auto;}
+    .faq-card {
+      background: #fff;
+      border-radius:14px;
+      box-shadow: 0 2px 14px rgba(18,38,60,.10);
+      border: 1.5px solid #c6e4ea;
+      margin-bottom:34px;
+      overflow:hidden;
+    }
+    .faq-header {
+      background: var(--faq-blue);
+      color: #fff;
+      padding: 26px 0 19px 0;
+      font-size:2.15rem;
+      font-weight:800;
+      text-align: center;
+      letter-spacing: -1px;
+    }
+    .faq-section {
+      padding: 0 0 10px 0;
+    }
+    .faq-category {
+      font-weight:700;
+      font-size:1.14em;
+      padding: 23px 28px 7px 28px;
+      color: #127983;
+      letter-spacing: .01em;
+      background: #f2faff;
+    }
+    .faq-list { margin:0; padding:0;}
+    .faq-q {
+      cursor:pointer;
+      background: #fff;
+      padding: 20px 28px 20px 28px;
+      border-top:1px solid #e2eff2;
+      font-size:1.15em;
+      font-weight:600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition:background 0.13s;
+    }
+    .faq-q:hover { background: #f6fefe; }
+    .faq-plus {
+      font-size: 2em;
+      font-weight: 400;
+      color: #187b85;
+      line-height: 0.85;
+      pointer-events:none;
+      transition:transform 0.14s;
+    }
+    .faq-q[aria-expanded="true"] .faq-plus { transform:rotate(45deg); }
+    .faq-a {
+      background: #f7fafb;
+      font-size:1.07em;
+      padding:0 35px 17px 42px;
+      color:#21293a;
+      display:none;
+      border-left: 2.5px solid var(--main);
+      border-radius:0 0 10px 10px;
+    }
+    .faq-q[aria-expanded="true"] + .faq-a {
+      display:block;
+      animation: fadeIn .27s;
+    }
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(12px);}
+      to { opacity:1; transform:none;}
+    }
+    @media (max-width:600px){
+      .faq-card{margin:13px 6px;}
+      .faq-header{font-size:1.55rem;}
+      .faq-category{padding:15px 10px 7px 10px;}
+      .faq-q,.faq-a{padding-left:13px;padding-right:13px;}
+      .faq-a{padding-left:21px;}
+      nav { gap: 9px; } /* Tighter on mobile */
+    }
+    .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap;}
+    .footer-links a { color: #377569; text-decoration: none; font-weight: 500;}
+    .footer-links a:hover { text-decoration: underline;}
+    .footer-social a { color: #119e8f; font-size: 1.15rem; margin-left: 12px; text-decoration: none;}
+    .footer-social a:hover { color: #15b6a4;}
+    footer { background: #fff; margin-top: 42px; padding: 17px 9px 12px 9px; font-size: 1rem; color: #476360; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #e6ebe8; gap: 10px; max-width: 1000px; margin-left:auto; margin-right:auto; border-radius: 0 0 14px 14px;}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="welcome.html" class="brand" style="text-decoration:none;">
+      <span style="display:inline-block;vertical-align:middle;margin-right:13px;">
+        <!-- Logo SVG -->
+        <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+          <path d="M12 14L24 8L36 14V28L24 34L12 28V14Z" fill="#1ABC9C" stroke="#0F4C5C" stroke-width="2"/>
+          <path d="M12 14L24 20L24 34L12 28V14Z" fill="#22B9AD" stroke="#0F4C5C" stroke-width="2"/>
+          <path d="M36 14L24 20L24 34L36 28V14Z" fill="#169E8C" stroke="#0F4C5C" stroke-width="2"/>
+        </svg>
+      </span>
+      PrintCraft
+    </a>
+    <nav>
+      <a href="materials.html">Materials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html" style="margin-left:20px;"><button class="get-started-btn">Get Started</button></a>
+      <!-- Orange Cart Icon -->
+      <a href="cart.html" class="cart-icon" title="Cart">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+          <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+          <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+          <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+        </svg>
+      </a>
+      <span class="profile-avatar" id="profileBtn" title="Profile">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+      </span>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html">My Profile</a>
+        <a href="orders.html">My Orders</a>
+        <a href="#" onclick="logout();return false;">Log Out</a>
+      </div>
+    </nav>
+  </header>
+  <div class="faq-wrap">
+    <div class="faq-card">
+      <div class="faq-header">FAQ</div>
+      <div class="faq-section">
+        <div class="faq-category">Printability Checks</div>
+        <div class="faq-list">
+          <div class="faq-q" tabindex="0" aria-expanded="false">How do you determine if my file is printable?<span class="faq-plus">+</span></div>
+          <div class="faq-a">
+            We run every upload through our slicer and look for “hard” errors—like a solid region where you designed a hole, or non-manifold geometry that the printer simply can’t reproduce. Only those kinds of blocking issues get flagged, so you can go back, fix them, and re-upload without being charged extra.
+          </div>
+          <div class="faq-q" tabindex="0" aria-expanded="false">What kinds of design problems won’t you catch?<span class="faq-plus">+</span></div>
+          <div class="faq-a">
+            We do <b>not</b> QA minor aesthetic details or structural thinness. If your model has hair-thin walls or missing support elements, we’ll still slice and print it—as long as it doesn’t produce a fatal error in the slicer.
+          </div>
+          <div class="faq-q" tabindex="0" aria-expanded="false">Will you add supports or thicken walls for me?<span class="faq-plus">+</span></div>
+          <div class="faq-a">
+            No—your design is printed as submitted (plus our auto-generated supports as needed). We don’t take responsibility for whether your part’s walls are thick enough or whether you manually added support structures.
+          </div>
+        </div>
+      </div>
+      <div class="faq-section">
+        <div class="faq-category">Design Responsibility</div>
+        <div class="faq-list">
+          <div class="faq-q" tabindex="0" aria-expanded="false">If my part fails or looks “wrong,” whose fault is it?<span class="faq-plus">+</span></div>
+          <div class="faq-a">
+            Unless there was a slicer-blocking error we didn’t catch, any downstream print artifacts (layer shifts, sagging overhangs, weak features) stem from your model. We’ll alert you only to unprintable geometry—not aesthetic or mechanical shortcomings in your design.
+          </div>
+          <div class="faq-q" tabindex="0" aria-expanded="false">What if my model is too thin or flexible?<span class="faq-plus">+</span></div>
+          <div class="faq-a">
+            As long as the slicer can generate toolpaths, we’ll print it. Thin walls may break or warp in the real world, but we don’t modify your design or reject it on that basis.
+          </div>
+        </div>
+      </div>
+      <div class="faq-section">
+        <div class="faq-category">Refunds & Shipping</div>
+        <div class="faq-list">
+          <div class="faq-q" tabindex="0" aria-expanded="false">What’s your refund policy?<span class="faq-plus">+</span></div>
+          <div class="faq-a">
+            <b>Partial refunds</b> are available if you notify us of damage or major defects <i>after</i> printing—since we incur material and shipping costs. You do <b>not</b> need to ship the part back.<br><br>
+            <b>Full refunds</b> (100%) are only granted if the error was on our end—for example, a machine malfunction that caused your figurine’s features to collapse or layers to severely delaminate.
+          </div>
+          <div class="faq-q" tabindex="0" aria-expanded="false">How and when will I receive my refund?<span class="faq-plus">+</span></div>
+          <div class="faq-a">
+            Once you contact us (ideally within 30 days of delivery) and we confirm damage or a genuine print-failure on our side, we'll process your refund promptly. Shipping fees are non-refundable in partial cases.
+          </div>
+          <div class="faq-q" tabindex="0" aria-expanded="false">Do you send photos before shipping?<span class="faq-plus">+</span></div>
+          <div class="faq-a">
+            Yes — after printing, we photograph your part and share those images so you can approve it (or flag visible defects) before we pack and ship.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-links">
+      <a href="materials.html">Materials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="Privacy%20Policy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" title="Facebook">🔵</a>
+      <a href="#" title="Twitter">🐦</a>
+      <a href="#" title="Instagram">📸</a>
+    </div>
+  </footer>
+  <script>
+    // Accordion
+    document.querySelectorAll('.faq-q').forEach((q, idx) => {
+      q.addEventListener('click', function(){
+        let open = q.getAttribute('aria-expanded') === 'true';
+        // Close all
+        document.querySelectorAll('.faq-q').forEach(qq=>qq.setAttribute('aria-expanded','false'));
+        // Open this if not already open
+        if(!open) q.setAttribute('aria-expanded','true');
+      });
+      q.addEventListener('keydown', function(e){
+        if(e.key==="Enter"||e.key===" "){e.preventDefault();q.click();}
+      });
+    });
+    // Profile dropdown logic
+    const btn = document.getElementById('profileBtn');
+    const dropdown = document.getElementById('profileDropdown');
+    btn.onclick = function(e){
+      dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+      dropdown.style.flexDirection = 'column';
+      e.stopPropagation();
+    };
+    window.addEventListener('click',()=>dropdown.style.display='none');
+    dropdown.onclick = e=>e.stopPropagation();
+    function logout() { alert('Logged out! (This is just a demo.)'); }
+  </script>
+</body>
+</html>

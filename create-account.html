@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PrintCraft – Create Account</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --main: #1abc9c; --cta: #ff7f32; --cta-hover: #f46a15; }
+    body { font-family: 'Inter',sans-serif; margin:0; background: #fafbfc; color: #182133;}
+    header { background:#fff; box-shadow:0 2px 18px rgba(17,50,56,0.10); border-radius:18px; margin:18px auto 0 auto; max-width:1080px; padding:0 24px; display:flex;align-items:center;justify-content:space-between; min-height:76px;}
+    .brand { font-size:2rem; font-weight:700; color:#1abc9c; display:flex; align-items:center; text-decoration:none;}
+    nav { display:flex; gap:32px; align-items:center; font-size:1.09rem;}
+    nav a { color:#21293a; text-decoration:none; font-weight:500;}
+    nav a:hover { color:var(--main);}
+    .get-started-btn {background:#ff7f32;color:#fff;border:none;border-radius:8px;padding:8px 23px;font-weight:700;font-size:1.13rem;cursor:pointer;transition:background .16s;}
+    .get-started-btn:hover { background: var(--cta-hover);}
+    .profile-avatar { background:#e3f5f5;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:26px;transition:box-shadow 0.15s;}
+    .profile-avatar svg {width:27px;height:27px;fill:#18787c;}
+    .profile-dropdown { position:absolute; top:70px; right:42px; background:#fff; border-radius:11px; box-shadow:0 2px 18px rgba(17,50,56,0.13); min-width:183px; z-index:99; display:none; flex-direction:column;}
+    .profile-dropdown a { color:#222; text-decoration:none; font-weight:500; font-size:1.09em; padding:15px 21px; transition:background .14s;}
+    .profile-dropdown a:hover { background:#f2f7f7;}
+    .account-card {
+      background:#fff; border-radius:17px; box-shadow:0 2px 16px rgba(17,50,56,0.09);
+      max-width:400px; margin:58px auto 48px auto; padding:39px 32px 32px 32px;
+      display:flex;flex-direction:column;align-items:center;
+    }
+    .account-title {font-size:2rem;font-weight:800;margin-bottom:12px;}
+    .account-form {width:100%;margin-top:9px;}
+    .form-label {font-weight:600;margin-bottom:6px;font-size:1.08em;}
+    .form-input {
+      width:100%; font-size:1.14em; border:1.4px solid #d7e6e3; border-radius:7px; padding:15px 13px; margin-bottom:16px; outline:none; background:#fafcff; transition:border .15s;
+    }
+    .form-input:focus { border-color: #1abc9c;}
+    .account-btn {background:#1abc9c;color:#fff;border:none;border-radius:8px;width:100%;font-weight:700;font-size:1.14rem;padding:14px 0;margin-top:8px;cursor:pointer;transition:background .14s;}
+    .account-btn:disabled {opacity:0.62; cursor:not-allowed;}
+    .account-btn:hover:enabled {background:#16a085;}
+    .account-footer {font-size:1.04em;margin-top:20px;text-align:center;}
+    .account-footer a { color:#1abc9c;text-decoration:underline; }
+    .account-footer a:hover { color:#12917d;}
+    .pw-rules {font-size:0.99em; margin:-11px 0 11px 0; color:#3e6567; padding-left:4px;}
+    .pw-rule {display:block;}
+    .pw-rule.invalid {color:#e13d37;}
+    .pw-rule.valid {color:#1abc9c;}
+    .error-msg {color:#e13d37; font-size:0.97em; margin-bottom:7px;}
+    @media (max-width:500px) {.account-card{padding:21px 5vw;}}
+    .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap;}
+    .footer-links a { color: #377569; text-decoration: none; font-weight: 500;}
+    .footer-links a:hover { text-decoration: underline;}
+    .footer-social a { color: #119e8f; font-size: 1.15rem; margin-left: 12px; text-decoration: none;}
+    .footer-social a:hover { color: #15b6a4;}
+    footer { background: #fff; margin-top: 42px; padding: 17px 9px 12px 9px; font-size: 1rem; color: #476360; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #e6ebe8; gap: 10px; max-width: 1000px; margin-left:auto; margin-right:auto; border-radius: 0 0 14px 14px;}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="welcome.html" class="brand" style="text-decoration:none;">
+      <span style="display:inline-block;vertical-align:middle;margin-right:13px;">
+        <!-- Logo SVG -->
+        <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+          <path d="M12 14L24 8L36 14V28L24 34L12 28V14Z" fill="#1ABC9C" stroke="#0F4C5C" stroke-width="2"/>
+          <path d="M12 14L24 20L24 34L12 28V14Z" fill="#22B9AD" stroke="#0F4C5C" stroke-width="2"/>
+          <path d="M36 14L24 20L24 34L36 28V14Z" fill="#169E8C" stroke="#0F4C5C" stroke-width="2"/>
+        </svg>
+      </span>
+      PrintCraft
+    </a>
+    <nav>
+      <a href="materials.html">Materials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html" style="margin-left:20px;"><button class="get-started-btn">Get Started</button></a>
+      <span class="profile-avatar" id="profileBtn" title="Profile">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+      </span>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="login.html">Sign In</a>
+        <a href="create-account.html">Create Account</a>
+      </div>
+    </nav>
+  </header>
+  <div class="account-card">
+    <div class="account-title">Create an Account</div>
+    <form class="account-form" autocomplete="off" onsubmit="return false;">
+      <div class="form-label">Email address</div>
+      <input type="email" class="form-input" id="email" placeholder="Email address" autocomplete="username" required>
+      <div class="form-label">Password</div>
+      <input type="password" class="form-input" id="password" placeholder="Password" autocomplete="new-password" required>
+      <div class="pw-rules" id="pwRules">
+        <span class="pw-rule" id="r1">8–12 characters</span>
+        <span class="pw-rule" id="r2">At least one uppercase letter</span>
+        <span class="pw-rule" id="r3">At least one digit or symbol</span>
+      </div>
+      <div class="error-msg" id="pwError"></div>
+      <button class="account-btn" id="createBtn" type="submit" disabled>Create Account</button>
+    </form>
+    <div class="account-footer">
+      Already have an account?
+      <a href="login.html">Sign In</a>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-links">
+      <a href="materials.html">Materials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="Privacy%20Policy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" title="Facebook">🔵</a>
+      <a href="#" title="Twitter">🐦</a>
+      <a href="#" title="Instagram">📸</a>
+    </div>
+  </footer>
+  <script>
+    // Profile dropdown
+    const btn = document.getElementById('profileBtn');
+    const dropdown = document.getElementById('profileDropdown');
+    btn.onclick = function(e){
+      dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+      dropdown.style.flexDirection = 'column';
+      e.stopPropagation();
+    };
+    window.addEventListener('click',()=>dropdown.style.display='none');
+    dropdown.onclick = e=>e.stopPropagation();
+
+    // Password rules
+    const pw = document.getElementById('password');
+    const rules = [
+      { test: s=>/^.{8,12}$/.test(s), el: document.getElementById('r1') },
+      { test: s=>/[A-Z]/.test(s), el: document.getElementById('r2') },
+      { test: s=>/[\d\W_]/.test(s), el: document.getElementById('r3') }
+    ];
+    pw.oninput = function() {
+      let v = pw.value, ok = true;
+      rules.forEach(r=>{
+        let valid = r.test(v);
+        r.el.className = 'pw-rule ' + (valid?'valid':'invalid');
+        if(!valid) ok = false;
+      });
+      document.getElementById('createBtn').disabled = !ok;
+      document.getElementById('pwError').innerText = '';
+    };
+    // Demo create account
+    document.querySelector('.account-form').onsubmit = function(){
+      let allOk = rules.every(r=>r.test(pw.value));
+      if(!allOk) {
+        document.getElementById('pwError').innerText = "Password doesn't meet requirements.";
+        return false;
+      }
+      alert('Account created! Redirecting to homepage...');
+      window.location = "welcome.html";
+    }
+  </script>
+</body>
+</html>
