@@ -14,41 +14,21 @@
       display:flex;align-items:center;justify-content:space-between; min-height:76px;
     }
     .brand { font-size:2rem; font-weight:700; color:#1abc9c; display:flex; align-items:center; text-decoration:none;}
-    nav {
-      display:flex;
-      gap:18px; /* REDUCED gap for tighter header! */
-      align-items:center; font-size:1.09rem;
-    }
+    nav { display:flex; gap:18px; align-items:center; font-size:1.09rem; }
     nav a { color:#21293a; text-decoration:none; font-weight:500;}
     nav a:hover { color:var(--main);}
-    .get-started-btn {
-      background: var(--cta); color: #fff; border: none; border-radius: 8px;
-      padding: 8px 23px; font-weight: 700; font-size: 1.13rem;
-      cursor: pointer; transition: background .16s;
-    }
+    .get-started-btn { background: var(--cta); color: #fff; border: none; border-radius: 8px; padding: 8px 23px; font-weight: 700; font-size: 1.13rem; cursor: pointer; transition: background .16s;}
     .get-started-btn:hover { background: var(--cta-hover); }
     .cart-icon {
-      background: #e3f5f5;
-      border-radius: 50%;
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; margin-left: 10px; /* REDUCED margin */
-      transition: box-shadow 0.15s;
+      background: #e3f5f5; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; margin-left: 10px; transition: box-shadow 0.15s;
     }
-    .cart-icon svg {
-      width: 24px; height: 24px;
-    }
+    .cart-icon svg { width: 24px; height: 24px; }
     .profile-avatar {
-      background: #e3f5f5;
-      border-radius: 50%;
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; margin-left: 10px; /* REDUCED margin */
-      transition: box-shadow 0.15s;
+      background: #e3f5f5; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; margin-left: 10px; transition: box-shadow 0.15s;
     }
-    .profile-avatar svg {
-      width: 27px; height: 27px; fill: #18787c;
-    }
+    .profile-avatar svg { width: 27px; height: 27px; fill: #18787c; }
     .profile-dropdown {
       position: absolute; top: 70px; right: 42px; background: #fff;
       border-radius: 11px; box-shadow: 0 2px 18px rgba(17,50,56,0.13);
@@ -60,47 +40,21 @@
     }
     .profile-dropdown a:hover { background: #f2f7f7; }
     .confirmation-wrap {
-      background:#fff;
-      border-radius:14px;
-      box-shadow: 0 2px 14px rgba(18,38,60,.10);
-      margin:54px auto 0 auto;
-      max-width:580px;
-      padding:43px 30px 35px 30px;
-      text-align: center;
+      background:#fff; border-radius:14px; box-shadow: 0 2px 14px rgba(18,38,60,.10);
+      margin:54px auto 0 auto; max-width:580px; padding:43px 30px 35px 30px; text-align: center;
     }
-    .confirmation-title {
-      font-size:2.12rem;
-      font-weight:800;
-      color:var(--main);
-      margin-bottom:18px;
-      letter-spacing:-1px;
-    }
-    .confirmation-check {
-      font-size: 3.1em;
-      color: var(--cta);
-      margin-bottom: 7px;
-    }
+    .confirmation-title { font-size:2.12rem; font-weight:800; color:var(--main); margin-bottom:18px; letter-spacing:-1px; }
+    .confirmation-check { font-size: 3.1em; color: var(--cta); margin-bottom: 7px; }
     .order-summary {
-      margin: 34px auto 19px auto;
-      background: #f8fafb;
-      border-radius: 12px;
-      padding: 24px 17px;
-      text-align: left;
-      font-size: 1.11em;
-      max-width: 410px;
-      box-shadow: 0 2px 8px rgba(26,188,156,0.07);
-      margin-bottom: 24px;
+      margin: 34px auto 19px auto; background: #f8fafb; border-radius: 12px;
+      padding: 24px 17px; text-align: left; font-size: 1.11em; max-width: 410px;
+      box-shadow: 0 2px 8px rgba(26,188,156,0.07); margin-bottom: 24px;
     }
     .order-summary b { color: #1abc9c; }
     .order-summary td { padding: 3px 6px 5px 0; }
     .order-summary tr:last-child td { font-weight: 700; color: var(--cta);}
     .order-id {color: #888; font-size: 1.08em; margin-bottom: 5px;}
-    .confirmation-btn {
-      background: var(--cta); color: #fff; border: none; border-radius: 8px;
-      padding: 14px 38px; font-weight: 700; font-size: 1.13rem;
-      cursor: pointer; transition: background .16s;
-      margin: 0 auto 0 auto; display: block;
-    }
+    .confirmation-btn { background: var(--cta); color: #fff; border: none; border-radius: 8px; padding: 14px 38px; font-weight: 700; font-size: 1.13rem; cursor: pointer; transition: background .16s; margin: 0 auto 0 auto; display: block;}
     .confirmation-btn:hover { background: var(--cta-hover);}
     .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap;}
     .footer-links a { color: #377569; text-decoration: none; font-weight: 500;}
@@ -111,15 +65,193 @@
     @media (max-width:600px){
       .confirmation-wrap {padding:21px 2vw;}
       .order-summary {padding:13px 2vw;}
-      nav { gap: 9px; } /* Tighter on mobile */
+      nav { gap: 9px; }
     }
+    .order-file-link { word-break:break-all; font-size:0.99em; color:#116fa1;}
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyANZVgsmZFspViu6tvkdnJF_Om7hJqywyU",
+      authDomain: "printcraft-90c28.firebaseapp.com",
+      projectId: "printcraft-90c28",
+      storageBucket: "printcraft-90c28.appspot.com",
+      messagingSenderId: "533146505328",
+      appId: "1:533146505328:web:3d38075160998042d424b5",
+      measurementId: "G-YHFN7QE2C4"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const db = getFirestore(app);
+
+    // Nav logic (same as all)
+    function updateNav(user) {
+      const nav = document.getElementById('navLinks');
+      if (user) {
+        nav.innerHTML = `
+          <a href="materials.html">Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" class="cart-icon" title="Cart">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+              <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+              <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+              <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <span class="profile-avatar" id="profileBtn" title="Profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+          </span>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="profile.html">My Profile</a>
+            <a href="orders.html">My Orders</a>
+            <a href="#" id="logoutLink">Log Out</a>
+          </div>
+        `;
+        setTimeout(() => {
+          document.getElementById('profileBtn').onclick = function(e){
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+            dropdown.style.flexDirection = 'column';
+            e.stopPropagation();
+          };
+          window.addEventListener('click',()=>{ const d=document.getElementById('profileDropdown');if(d)d.style.display='none'; });
+          document.getElementById('profileDropdown').onclick = e=>e.stopPropagation();
+          document.getElementById('logoutLink').onclick = function(e){
+            e.preventDefault(); signOut(auth).then(()=>window.location="login.html");
+          };
+        }, 100);
+      } else {
+        nav.innerHTML = `
+          <a href="materials.html">Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" class="cart-icon" title="Cart">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+              <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+              <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+              <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <span class="profile-avatar" id="profileBtn" title="Profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+          </span>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="login.html">Sign In</a>
+            <a href="create-account.html">Create Account</a>
+          </div>
+        `;
+        setTimeout(() => {
+          document.getElementById('profileBtn').onclick = function(e){
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+            dropdown.style.flexDirection = 'column';
+            e.stopPropagation();
+          };
+          window.addEventListener('click',()=>{ const d=document.getElementById('profileDropdown');if(d)d.style.display='none'; });
+          document.getElementById('profileDropdown').onclick = e=>e.stopPropagation();
+        }, 100);
+      }
+    }
+
+    // Utility to get query param
+    function getParam(name){
+      const url = new URL(window.location);
+      return url.searchParams.get(name);
+    }
+
+    // EmailJS send function
+    function sendConfirmationEmail(order) {
+      if (!order || !order.email) return;
+      emailjs.init("cENCr7ZxbsjwzR2oh");
+      emailjs.send("service_eim9ren", "template_jfdryve", {
+        to_email: order.email,
+        order_id: order.id,
+        name: order.name || "Customer",
+        address: order.address || "",
+        summary: renderSummaryTable(order)
+      });
+    }
+
+    // Render table for order summary (for email & page)
+    function renderSummaryTable(order) {
+      let html = '<table style="width:100%;border:none">';
+      if (order.items && order.items.length) {
+        html += `<tr><th>Material</th><th>Colors</th><th>Grams</th><th>Price</th></tr>`;
+        order.items.forEach(item => {
+          html += `<tr>
+            <td>${item.material}</td>
+            <td>${item.colors ? item.colors.join(", ") : ""}</td>
+            <td>${item.grams ? item.grams+"g" : ""}</td>
+            <td>$${item.total ? item.total.toFixed(2) : ""}</td>
+          </tr>`;
+        });
+        html += `<tr><td colspan="3"><b>Total</b></td><td><b>$${order.total ? order.total.toFixed(2) : ""}</b></td></tr>`;
+      }
+      html += "</table>";
+      return html;
+    }
+
+    // Render order
+    async function renderOrder() {
+      const orderId = getParam('order');
+      if (!orderId) {
+        document.getElementById('confirmationWrap').innerHTML = `<div style="color:#d22;font-size:1.19em;padding:32px;">Order not found.</div>`;
+        return;
+      }
+      const docRef = doc(db, "orders", orderId);
+      const docSnap = await getDoc(docRef);
+      if (!docSnap.exists()) {
+        document.getElementById('confirmationWrap').innerHTML = `<div style="color:#d22;font-size:1.19em;padding:32px;">Order not found.</div>`;
+        return;
+      }
+      const order = docSnap.data();
+      order.id = orderId;
+      // Build summary
+      let html = `
+        <div class="confirmation-check">✔️</div>
+        <div class="confirmation-title">Order Confirmed!</div>
+        <div class="order-id">Order #${orderId}</div>
+        <div class="order-summary">
+          <table style="width:100%; border:none;">
+            <tr><td><b>Email</b></td><td>${order.email}</td></tr>
+            <tr><td><b>Shipping Address</b></td><td>${order.address.replace(/\n/g,'<br>')}</td></tr>
+            <tr><td colspan="2"><b>Items:</b></td></tr>
+            <tr>
+              <td colspan="2">
+                ${renderSummaryTable(order)}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <a href="orders.html"><button class="confirmation-btn">View Order Status</button></a>
+        <div style="color:#888;font-size:1.04em;margin-top:16px;">A confirmation email has been sent to you.<br>For help, <a href="contact.html" style="color:var(--main);">contact us</a>.</div>
+      `;
+      document.getElementById('confirmationWrap').innerHTML = html;
+      // Email confirmation (send only once, eg. if url contains &justSubmitted=1)
+      if (getParam('justSubmitted')==='1') sendConfirmationEmail(order);
+    }
+
+    // Auth/nav setup
+    let userData = null;
+    onAuthStateChanged(auth, user => {
+      userData = user;
+      updateNav(user);
+    });
+
+    window.addEventListener('DOMContentLoaded', renderOrder);
+  </script>
 </head>
 <body>
   <header>
     <a href="welcome.html" class="brand" style="text-decoration:none;">
       <span style="display:inline-block;vertical-align:middle;margin-right:13px;">
-        <!-- Logo SVG -->
         <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
           <path d="M12 14L24 8L36 14V28L24 34L12 28V14Z" fill="#1ABC9C" stroke="#0F4C5C" stroke-width="2"/>
           <path d="M12 14L24 20L24 34L12 28V14Z" fill="#22B9AD" stroke="#0F4C5C" stroke-width="2"/>
@@ -128,50 +260,12 @@
       </span>
       PrintCraft
     </a>
-    <nav>
-      <a href="materials.html">Materials</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
-      <a href="index.html" style="margin-left:20px;">
-        <button class="get-started-btn">Get Started</button>
-      </a>
-      <!-- Orange Cart Icon -->
-      <a href="cart.html" class="cart-icon" title="Cart">
-        <svg viewBox="0 0 24 24">
-          <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
-          <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
-          <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
-          <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
-        </svg>
-      </a>
-      <span class="profile-avatar" id="profileBtn" title="Profile">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
-      </span>
-      <div class="profile-dropdown" id="profileDropdown">
-        <a href="profile.html">My Profile</a>
-        <a href="orders.html">My Orders</a>
-        <a href="#" onclick="logout();return false;">Log Out</a>
-      </div>
+    <nav id="navLinks">
+      <!-- Nav rendered by JS -->
     </nav>
   </header>
-  <div class="confirmation-wrap">
-    <div class="confirmation-check">✔️</div>
-    <div class="confirmation-title">Order Confirmed!</div>
-    <div class="order-id">Order #123456789</div>
-    <div class="order-summary">
-      <table style="width:100%; border:none;">
-        <tr><td><b>Email</b></td><td>customer@email.com</td></tr>
-        <tr><td><b>Shipping Address</b></td><td>1234 Elm St<br>Springfield, IL 62701</td></tr>
-        <tr><td><b>Material</b></td><td>PLA</td></tr>
-        <tr><td><b>Color(s)</b></td><td>Red, White</td></tr>
-        <tr><td><b>Filament Usage</b></td><td>25g</td></tr>
-        <tr><td><b>Support Removal</b></td><td>$5.00</td></tr>
-        <tr><td><b>Shipping</b></td><td>$8.50</td></tr>
-        <tr><td><b>Total</b></td><td>$29.60</td></tr>
-      </table>
-    </div>
-    <a href="orders.html"><button class="confirmation-btn">View Order Status</button></a>
-    <div style="color:#888;font-size:1.04em;margin-top:16px;">A confirmation email has been sent to you.<br>For help, <a href="contact.html" style="color:var(--main);">contact us</a>.</div>
+  <div class="confirmation-wrap" id="confirmationWrap">
+    <!-- Order details will be loaded here -->
   </div>
   <footer>
     <div class="footer-links">
@@ -187,18 +281,5 @@
       <a href="#" title="Instagram">📸</a>
     </div>
   </footer>
-  <script>
-    // Profile dropdown logic
-    const btn = document.getElementById('profileBtn');
-    const dropdown = document.getElementById('profileDropdown');
-    btn.onclick = function(e){
-      dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
-      dropdown.style.flexDirection = 'column';
-      e.stopPropagation();
-    };
-    window.addEventListener('click',()=>dropdown.style.display='none');
-    dropdown.onclick = e=>e.stopPropagation();
-    function logout() { alert('Logged out! (This is just a demo.)'); }
-  </script>
 </body>
 </html>
