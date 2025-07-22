@@ -6,98 +6,35 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root { --main: #1abc9c; --cta: #ff7f32; --cta-hover: #f46a15; --border: #e2eff2; --bg: #f8f9fa; }
-    body { font-family: 'Inter',sans-serif; margin:0; background: var(--bg); color: #182133;}
-    header {
-      background:#fff; box-shadow:0 2px 18px rgba(17,50,56,0.10);
-      border-radius:18px; margin:18px auto 0 auto; max-width:1080px; padding:0 24px;
-      display:flex;align-items:center;justify-content:space-between; min-height:76px;
-    }
+    :root { --main: #1abc9c; --cta: #ff7f32; --cta-hover: #f46a15; }
+    body { font-family: 'Inter',sans-serif; margin:0; background: #fafbfc; color: #182133;}
+    header { background:#fff; box-shadow:0 2px 18px rgba(17,50,56,0.10); border-radius:18px; margin:18px auto 0 auto; max-width:1080px; padding:0 24px; display:flex;align-items:center;justify-content:space-between; min-height:76px;}
     .brand { font-size:2rem; font-weight:700; color:#1abc9c; display:flex; align-items:center; text-decoration:none;}
-    nav { display:flex; gap:18px; align-items:center; font-size:1.09rem;}
+    nav { display:flex; gap:32px; align-items:center; font-size:1.09rem;}
     nav a { color:#21293a; text-decoration:none; font-weight:500;}
     nav a:hover { color:var(--main);}
     .get-started-btn {background:#ff7f32;color:#fff;border:none;border-radius:8px;padding:8px 23px;font-weight:700;font-size:1.13rem;cursor:pointer;transition:background .16s;}
     .get-started-btn:hover { background: var(--cta-hover);}
-    .cart-icon {
-      background: #e3f5f5;
-      border-radius: 50%;
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; margin-left: 10px; transition: box-shadow 0.15s;
-    }
+    .cart-icon { background: #e3f5f5; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-left: 18px; transition: box-shadow 0.15s;}
     .cart-icon svg { width: 24px; height: 24px;}
-    .profile-avatar { background:#e3f5f5;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:10px;transition:box-shadow 0.15s;}
+    .profile-avatar { background:#e3f5f5;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:18px;transition:box-shadow 0.15s;}
     .profile-avatar svg {width:27px;height:27px;fill:#18787c;}
-    .profile-dropdown {
-      position:absolute; top:70px; right:42px; background:#fff; border-radius:11px; box-shadow:0 2px 18px rgba(17,50,56,0.13); min-width:183px; z-index:99; display:none; flex-direction:column;
-    }
-    .profile-dropdown a {
-      color:#222; text-decoration:none; font-weight:500; font-size:1.09em; padding:15px 21px; transition:background .14s;
-    }
+    .profile-dropdown { position:absolute; top:70px; right:42px; background:#fff; border-radius:11px; box-shadow:0 2px 18px rgba(17,50,56,0.13); min-width:183px; z-index:99; display:none; flex-direction:column;}
+    .profile-dropdown a { color:#222; text-decoration:none; font-weight:500; font-size:1.09em; padding:15px 21px; transition:background .14s;}
     .profile-dropdown a:hover { background:#f2f7f7;}
-    .profile-card {
-      background: #fff;
-      border-radius:16px;
-      box-shadow:0 2px 16px rgba(17,50,56,0.09);
-      max-width:900px;
-      margin: 38px auto 0 auto;
-      padding: 37px 45px 44px 45px;
-    }
-    @media (max-width:700px) {
-      .profile-card {padding:19px 3vw;}
-      .profile-tabs {flex-direction:column;}
-      .profile-tabs button {width:100%;border-radius:11px;}
-    }
-    .profile-title { font-size:2.28rem; font-weight:800; margin-bottom:30px; letter-spacing:-1px;}
-    .profile-tabs { display: flex; border-radius:11px; overflow:hidden; margin-bottom:29px; border:1.6px solid var(--border);}
-    .profile-tabs button {
-      flex:1; padding:15px 7px; background:#fafdff; border:none; outline:none; font-size:1.14em; font-weight:700; cursor:pointer;
-      color:#22443e; transition:background .13s, color .13s;
-      border-right:1.5px solid var(--border);
-    }
-    .profile-tabs button:last-child{border-right:none;}
-    .profile-tabs button.active {
-      background:#fff; color:#1abc9c; box-shadow:0 4px 14px 0 rgba(26,188,156,0.07); border-bottom:2.5px solid #1abc9c;
-      z-index:2;
-    }
-    /* Personal info form */
-    .info-title { font-size:1.38rem; font-weight:800; margin:38px 0 16px 0;}
-    .info-label {font-weight:500;margin-bottom:5px;font-size:1.06em;}
-    .info-input {
-      width:100%; font-size:1.15em; border:1.4px solid #d7e6e3; border-radius:7px; padding:14px 13px; margin-bottom:16px; outline:none; background:#fafcff; transition:border .15s;
-    }
-    .info-input:focus { border-color: #1abc9c;}
-    .pm-card {
-      background:#f7fafd; border-radius:8px; display:flex;align-items:center;padding:11px 17px;gap:14px;
-      font-size:1.19em; max-width:265px; margin-bottom:24px; border:1.3px solid #dde8e7;
-    }
-    .edit-btn {
-      background: #ff7f32; color: #fff; border: none; border-radius:8px;
-      font-size:1.15em; font-weight:700; padding:12px 34px; cursor:pointer; transition:background .15s;
-    }
-    .edit-btn:hover { background: #f46a15;}
-    .delete-btn {
-      background: #ef4444; color: #fff; border: none; border-radius:8px;
-      font-size:1em; font-weight:700; padding:10px 24px; cursor:pointer; transition:background .15s; margin-top:22px;
-    }
-    .delete-btn:hover { background: #b91c1c;}
-    /* My Orders */
-    .orders-table {width:100%; border-collapse:separate; border-spacing:0 12px;}
-    .orders-table th, .orders-table td {font-size:1.1em; text-align:left; padding:9px 10px;}
-    .orders-table th { color:#294952; font-size:1.13em; font-weight:800;}
-    .order-row {background:#fcfeff; border-radius:12px;}
-    .order-thumb {width:70px; height:70px; object-fit:cover; border-radius:7px; border:1.1px solid #e5e6ec; margin-right:11px;}
-    .order-details {font-size:1.08em;}
-    .order-action {
-      color: #1abc9c; font-weight:600; font-size:1em; cursor:pointer; text-decoration:underline; margin-left:7px;
-    }
-    .order-action:hover { color:#12917d;}
-    .logout-btn {
-      margin-top: 24px; background: #1abc9c; color: #fff; border: none; border-radius:8px;
-      font-size:1.05em; font-weight:700; padding:11px 28px; cursor:pointer; transition:background .15s;
-    }
-    .logout-btn:hover { background: #127983; }
+    .profile-card { background:#fff; border-radius:17px; box-shadow:0 2px 16px rgba(17,50,56,0.09); max-width:420px; margin:58px auto 48px auto; padding:39px 32px 32px 32px; display:flex;flex-direction:column;align-items:center;}
+    .profile-title {font-size:2rem;font-weight:800;margin-bottom:12px;}
+    .profile-info {margin:16px 0; width:100%;}
+    .profile-label {font-weight:600; margin-bottom:6px;}
+    .profile-value { font-size:1.13em; margin-bottom:14px; color:#1abc9c;}
+    .profile-form { width:100%; }
+    .form-input { width:100%; font-size:1.14em; border:1.4px solid #d7e6e3; border-radius:7px; padding:15px 13px; margin-bottom:16px; outline:none; background:#fafcff; transition:border .15s;}
+    .form-input:focus { border-color: #1abc9c;}
+    .profile-btn {background:#1abc9c;color:#fff;border:none;border-radius:8px;width:100%;font-weight:700;font-size:1.14rem;padding:14px 0;margin-top:8px;cursor:pointer;transition:background .14s;}
+    .profile-btn:disabled {opacity:0.62; cursor:not-allowed;}
+    .profile-btn:hover:enabled {background:#16a085;}
+    .error-msg {color:#e13d37; font-size:0.97em; margin-bottom:7px;}
+    @media (max-width:500px) {.profile-card{padding:21px 5vw;}}
     .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap;}
     .footer-links a { color: #377569; text-decoration: none; font-weight: 500;}
     .footer-links a:hover { text-decoration: underline;}
@@ -105,12 +42,120 @@
     .footer-social a:hover { color: #15b6a4;}
     footer { background: #fff; margin-top: 42px; padding: 17px 9px 12px 9px; font-size: 1rem; color: #476360; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #e6ebe8; gap: 10px; max-width: 1000px; margin-left:auto; margin-right:auto; border-radius: 0 0 14px 14px;}
   </style>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, updateProfile, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyANZVgsmZFspViu6tvkdnJF_Om7hJqywyU",
+      authDomain: "printcraft-90c28.firebaseapp.com",
+      projectId: "printcraft-90c28",
+      storageBucket: "printcraft-90c28.appspot.com",
+      messagingSenderId: "533146505328",
+      appId: "1:533146505328:web:3d38075160998042d424b5",
+      measurementId: "G-YHFN7QE2C4"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    // Nav logic
+    function updateNav(user) {
+      const nav = document.getElementById('navLinks');
+      if (user) {
+        nav.innerHTML = `
+          <a href="materials.html">Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" class="cart-icon" title="Cart">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+              <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+              <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+              <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <span class="profile-avatar" id="profileBtn" title="Profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+          </span>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="profile.html">My Profile</a>
+            <a href="orders.html">My Orders</a>
+            <a href="#" id="logoutLink">Log Out</a>
+          </div>
+        `;
+        setTimeout(() => {
+          document.getElementById('profileBtn').onclick = function(e){
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+            dropdown.style.flexDirection = 'column';
+            e.stopPropagation();
+          };
+          window.addEventListener('click',()=>{ const d=document.getElementById('profileDropdown');if(d)d.style.display='none'; });
+          document.getElementById('profileDropdown').onclick = e=>e.stopPropagation();
+          document.getElementById('logoutLink').onclick = function(e){
+            e.preventDefault(); signOut(auth).then(()=>window.location="login.html");
+          };
+        }, 100);
+      } else {
+        nav.innerHTML = `
+          <a href="materials.html">Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" class="cart-icon" title="Cart">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+              <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+              <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+              <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <span class="profile-avatar" id="profileBtn" title="Profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+          </span>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="login.html">Sign In</a>
+            <a href="create-account.html">Create Account</a>
+          </div>
+        `;
+        setTimeout(() => {
+          document.getElementById('profileBtn').onclick = function(e){
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+            dropdown.style.flexDirection = 'column';
+            e.stopPropagation();
+          };
+          window.addEventListener('click',()=>{ const d=document.getElementById('profileDropdown');if(d)d.style.display='none'; });
+          document.getElementById('profileDropdown').onclick = e=>e.stopPropagation();
+        }, 100);
+      }
+    }
+    // Profile content render
+    onAuthStateChanged(auth, user => {
+      updateNav(user);
+      if (!user) {
+        document.getElementById('profileCard').innerHTML = `<div style="text-align:center;font-size:1.19em;color:#d33;margin-top:32px;">You must <a href="login.html">sign in</a> to view your profile.</div>`;
+        return;
+      }
+      document.getElementById('profileEmail').innerText = user.email;
+      document.getElementById('displayName').value = user.displayName || "";
+      document.getElementById('profileCard').style.display = "";
+      document.getElementById('editForm').onsubmit = async function(e){
+        e.preventDefault();
+        document.getElementById('formError').innerText = "";
+        try {
+          await updateProfile(user, { displayName: document.getElementById('displayName').value });
+          document.getElementById('formSuccess').innerText = "Profile updated!";
+        } catch (err) {
+          document.getElementById('formError').innerText = err.message;
+        }
+      };
+    });
+  </script>
 </head>
 <body>
   <header>
     <a href="welcome.html" class="brand" style="text-decoration:none;">
       <span style="display:inline-block;vertical-align:middle;margin-right:13px;">
-        <!-- Logo SVG -->
         <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
           <path d="M12 14L24 8L36 14V28L24 34L12 28V14Z" fill="#1ABC9C" stroke="#0F4C5C" stroke-width="2"/>
           <path d="M12 14L24 20L24 34L12 28V14Z" fill="#22B9AD" stroke="#0F4C5C" stroke-width="2"/>
@@ -119,104 +164,23 @@
       </span>
       PrintCraft
     </a>
-    <nav>
-      <a href="materials.html">Materials</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
-      <a href="index.html" style="margin-left:20px;">
-        <button class="get-started-btn">Get Started</button>
-      </a>
-      <!-- Orange Cart Icon -->
-      <a href="cart.html" class="cart-icon" title="Cart">
-        <svg viewBox="0 0 24 24">
-          <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
-          <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
-          <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
-          <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
-        </svg>
-      </a>
-      <span class="profile-avatar" id="profileBtn" title="Profile">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
-      </span>
-      <div class="profile-dropdown" id="profileDropdown">
-        <a href="profile.html">My Profile</a>
-        <a href="orders.html">My Orders</a>
-        <a href="#" onclick="logout();return false;">Log Out</a>
-      </div>
+    <nav id="navLinks">
+      <!-- Nav will be rendered by JS -->
     </nav>
   </header>
-  <div class="profile-card">
+  <div class="profile-card" id="profileCard" style="display:none;">
     <div class="profile-title">My Profile</div>
-    <div class="profile-tabs" id="tabs">
-      <button class="active" id="tabInfo" onclick="showTab('info')">My Personal Information</button>
-      <button id="tabOrders" onclick="showTab('orders')">My Orders</button>
+    <div class="profile-info">
+      <div class="profile-label">Email:</div>
+      <div class="profile-value" id="profileEmail"></div>
     </div>
-    <!-- PERSONAL INFO TAB -->
-    <div id="infoTab" style="display:block;">
-      <div class="info-title">My Personal Information</div>
-      <div>
-        <div class="info-label">First Name</div>
-        <input class="info-input" value="Alex" readonly>
-        <div class="info-label">Last Name</div>
-        <input class="info-input" value="Smith" readonly>
-        <div class="info-label">Shipping Address</div>
-        <input class="info-input" value="1234 Elm St&#10;Springfield, IL 62701" readonly>
-      </div>
-      <div class="info-title" style="margin-top:32px;">Payment Method</div>
-      <div class="pm-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" style="width:43px;"/>
-        <span style="letter-spacing:2px;">••• 4242</span>
-      </div>
-      <button class="edit-btn" onclick="alert('Editing not implemented in this demo.')">Edit</button>
-      <button class="delete-btn" onclick="alert('Delete account not implemented in this demo.')">Delete Account</button>
-      <button class="logout-btn" onclick="logout();">Log Out</button>
-    </div>
-    <!-- ORDERS TAB -->
-    <div id="ordersTab" style="display:none;">
-      <table class="orders-table">
-        <thead>
-          <tr>
-            <th>Order</th><th>Date</th><th>Status</th><th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="order-row">
-            <td>
-              <div style="display:flex;align-items:center;">
-                <img src="https://cdn-icons-png.flaticon.com/512/1163/1163657.png" class="order-thumb" alt="Order item"/>
-                <div class="order-details">
-                  #123456<br>
-                  PLA · 25g<br>
-                  Red<br>
-                  John Doe<br>
-                  1234 Elm St<br>Springfield, IL 62701
-                </div>
-              </div>
-            </td>
-            <td>Jun 15, 2024</td>
-            <td>Shipped</td>
-            <td>$16.50</td>
-          </tr>
-          <tr class="order-row">
-            <td>
-              <div style="display:flex;align-items:center;">
-                <img src="https://cdn-icons-png.flaticon.com/512/1163/1163657.png" class="order-thumb" alt="Order item"/>
-                <div class="order-details">
-                  #123455<br>
-                  PLA · 25g<br>
-                  Red<br>
-                  John Doe<br>
-                  1234 Elm St<br>Springfield, IL 62701
-                </div>
-              </div>
-            </td>
-            <td>May 28, 2024</td>
-            <td>Delivered <span class="order-action" onclick="alert('Reorder submitted!')">Reorder</span></td>
-            <td>$16.50</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <form class="profile-form" id="editForm" autocomplete="off">
+      <div class="profile-label">Display Name (optional):</div>
+      <input type="text" class="form-input" id="displayName" maxlength="32" autocomplete="name">
+      <div class="error-msg" id="formError"></div>
+      <div style="color:#16a085;margin-bottom:10px;" id="formSuccess"></div>
+      <button class="profile-btn" type="submit">Save Profile</button>
+    </form>
   </div>
   <footer>
     <div class="footer-links">
@@ -232,26 +196,5 @@
       <a href="#" title="Instagram">📸</a>
     </div>
   </footer>
-  <script>
-    // Tab logic
-    function showTab(tab){
-      document.getElementById('tabOrders').classList.toggle('active',tab==='orders');
-      document.getElementById('tabInfo').classList.toggle('active',tab==='info');
-      document.getElementById('ordersTab').style.display = tab==='orders'?'block':'none';
-      document.getElementById('infoTab').style.display = tab==='info'?'block':'none';
-    }
-    // Profile dropdown
-    const btn = document.getElementById('profileBtn');
-    const dropdown = document.getElementById('profileDropdown');
-    btn.onclick = function(e){
-      dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
-      dropdown.style.flexDirection = 'column';
-      e.stopPropagation();
-    };
-    window.addEventListener('click',()=>dropdown.style.display='none');
-    dropdown.onclick = e=>e.stopPropagation();
-    // Log out demo
-    function logout() { alert('Logged out! (This is just a demo.)'); }
-  </script>
 </body>
 </html>
