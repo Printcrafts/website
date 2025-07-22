@@ -2,143 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>PrintCraft – Login</title>
+  <title>PrintCraft – Sign In</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --main: #1abc9c;
-      --cta: #ff7f32;
-      --cta-hover: #f46a15;
-      --bg: #f8f9fa;
-      --dark: #163447;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: var(--bg);
-      color: var(--dark);
-    }
-    header {
-      background: #fff;
-      box-shadow: 0 2px 18px rgba(17,50,56,0.10);
-      border-radius: 18px;
-      margin: 18px auto 0 auto;
-      max-width: 1080px;
-      padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      min-height: 76px;
-    }
-    .brand {
-      font-size: 2rem; font-weight: 700; color: #1abc9c;
-      display: flex; align-items: center; text-decoration: none;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      font-size: 1.09rem;
-      gap: 0;
-    }
-    nav a { color: #21293a; text-decoration: none; font-weight: 500; margin-left: 32px; }
-    nav a:first-child { margin-left: 0; }
-    nav a:hover { color: var(--main); }
-    .get-started-btn {
-      background: var(--cta); color: #fff; border: none; border-radius: 8px;
-      padding: 8px 23px; font-weight: 700; font-size: 1.13rem;
-      cursor: pointer; transition: background .16s;
-      margin-left: 28px;
-    }
-    .get-started-btn:hover { background: var(--cta-hover); }
-    .cart-icon {
-      background: #e3f5f5;
-      border-radius: 50%;
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; margin-left: 12px;
-      transition: box-shadow 0.15s;
-    }
-    .cart-icon svg {
-      width: 24px; height: 24px;
-    }
-    .profile-avatar {
-      background: #e3f5f5;
-      border-radius: 50%;
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; margin-left: 12px;
-      transition: box-shadow 0.15s;
-    }
-    .profile-avatar svg {
-      width: 27px; height: 27px; fill: #18787c;
-    }
-    .profile-dropdown {
-      position: absolute; top: 70px; right: 42px; background: #fff;
-      border-radius: 11px; box-shadow: 0 2px 18px rgba(17,50,56,0.13);
-      min-width: 183px; z-index: 99; display: none; flex-direction: column;
-    }
-    .profile-dropdown a {
-      color: #222; text-decoration: none; font-weight: 500; font-size: 1.09em;
-      padding: 15px 21px; transition: background .14s;
-    }
-    .profile-dropdown a:hover { background: #f2f7f7; }
-    .login-main {
-      max-width: 380px;
-      margin: 58px auto 0 auto;
-    }
-    .login-card {
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 2px 14px rgba(18,38,60,.10);
-      padding: 32px 32px 23px 32px;
-      margin-bottom: 36px;
-    }
-    .login-title {
-      font-size: 2rem; font-weight: 800; margin-bottom: 28px; text-align: center; letter-spacing: -1px;
-    }
-    .login-form label { font-size: 1.04em; font-weight: 500; }
-    .login-input {
-      width: 100%; font-size: 1.13em;
-      border: 1.3px solid #ccc;
-      border-radius: 7px;
-      padding: 15px 13px;
-      margin-bottom: 18px;
-      outline: none;
-      background: #fafcff;
-      transition: border .15s;
-    }
-    .login-input:focus { border-color: var(--main);}
-    .login-btn {
-      background: var(--main); color: #fff; border: none;
-      width: 100%; font-weight: 700; font-size: 1.15em; border-radius: 8px;
-      padding: 15px 0; cursor: pointer; transition: background .15s; box-shadow: 0 2px 12px rgba(26,188,156,0.07);
-      margin-bottom: 12px;
-    }
-    .login-btn:hover { background: #159d87;}
-    .login-actions { text-align: center; }
-    .login-link {
-      color: #1abc9c; text-decoration: underline; font-size: 0.98em;
-      cursor: pointer;
-      margin-bottom: 7px;
-      display: inline-block;
-      transition: color .13s;
-    }
-    .login-link:hover { color: #0d8173; }
-    .login-footer {
-      margin-top: 18px;
-      font-size: 1.04em;
-      color: #476360;
-      text-align: center;
-    }
-    .login-footer a {
-      color: #1abc9c; text-decoration: underline;
-      font-weight: 500;
-      transition: color .13s;
-    }
-    .login-footer a:hover { color: #0d8173;}
-    @media (max-width:700px){
-      .login-main { padding: 9px; }
-      .login-card { padding: 22px 3vw 19px 3vw; }
-    }
+    :root { --main: #1abc9c; --cta: #ff7f32; --cta-hover: #f46a15; }
+    body { font-family: 'Inter',sans-serif; margin:0; background: #fafbfc; color: #182133;}
+    header { background:#fff; box-shadow:0 2px 18px rgba(17,50,56,0.10); border-radius:18px; margin:18px auto 0 auto; max-width:1080px; padding:0 24px; display:flex;align-items:center;justify-content:space-between; min-height:76px;}
+    .brand { font-size:2rem; font-weight:700; color:#1abc9c; display:flex; align-items:center; text-decoration:none;}
+    nav { display:flex; gap:32px; align-items:center; font-size:1.09rem;}
+    nav a { color:#21293a; text-decoration:none; font-weight:500;}
+    nav a:hover { color:var(--main);}
+    .get-started-btn {background:#ff7f32;color:#fff;border:none;border-radius:8px;padding:8px 23px;font-weight:700;font-size:1.13rem;cursor:pointer;transition:background .16s;}
+    .get-started-btn:hover { background: var(--cta-hover);}
+    .cart-icon { background: #e3f5f5; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-left: 18px; transition: box-shadow 0.15s;}
+    .cart-icon svg { width: 24px; height: 24px;}
+    .profile-avatar { background:#e3f5f5;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:18px;transition:box-shadow 0.15s;}
+    .profile-avatar svg {width:27px;height:27px;fill:#18787c;}
+    .profile-dropdown { position:absolute; top:70px; right:42px; background:#fff; border-radius:11px; box-shadow:0 2px 18px rgba(17,50,56,0.13); min-width:183px; z-index:99; display:none; flex-direction:column;}
+    .profile-dropdown a { color:#222; text-decoration:none; font-weight:500; font-size:1.09em; padding:15px 21px; transition:background .14s;}
+    .profile-dropdown a:hover { background:#f2f7f7;}
+    .account-card { background:#fff; border-radius:17px; box-shadow:0 2px 16px rgba(17,50,56,0.09); max-width:400px; margin:58px auto 48px auto; padding:39px 32px 32px 32px; display:flex;flex-direction:column;align-items:center;}
+    .account-title {font-size:2rem;font-weight:800;margin-bottom:12px;}
+    .account-form {width:100%;margin-top:9px;}
+    .form-label {font-weight:600;margin-bottom:6px;font-size:1.08em;}
+    .form-input { width:100%; font-size:1.14em; border:1.4px solid #d7e6e3; border-radius:7px; padding:15px 13px; margin-bottom:16px; outline:none; background:#fafcff; transition:border .15s;}
+    .form-input:focus { border-color: #1abc9c;}
+    .account-btn {background:#1abc9c;color:#fff;border:none;border-radius:8px;width:100%;font-weight:700;font-size:1.14rem;padding:14px 0;margin-top:8px;cursor:pointer;transition:background .14s;}
+    .account-btn:disabled {opacity:0.62; cursor:not-allowed;}
+    .account-btn:hover:enabled {background:#16a085;}
+    .account-footer {font-size:1.04em;margin-top:20px;text-align:center;}
+    .account-footer a { color:#1abc9c;text-decoration:underline; }
+    .account-footer a:hover { color:#12917d;}
+    .error-msg {color:#e13d37; font-size:0.97em; margin-bottom:7px;}
+    @media (max-width:500px) {.account-card{padding:21px 5vw;}}
     .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap;}
     .footer-links a { color: #377569; text-decoration: none; font-weight: 500;}
     .footer-links a:hover { text-decoration: underline;}
@@ -146,12 +43,116 @@
     .footer-social a:hover { color: #15b6a4;}
     footer { background: #fff; margin-top: 42px; padding: 17px 9px 12px 9px; font-size: 1rem; color: #476360; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #e6ebe8; gap: 10px; max-width: 1000px; margin-left:auto; margin-right:auto; border-radius: 0 0 14px 14px;}
   </style>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyANZVgsmZFspViu6tvkdnJF_Om7hJqywyU",
+      authDomain: "printcraft-90c28.firebaseapp.com",
+      projectId: "printcraft-90c28",
+      storageBucket: "printcraft-90c28.appspot.com",
+      messagingSenderId: "533146505328",
+      appId: "1:533146505328:web:3d38075160998042d424b5",
+      measurementId: "G-YHFN7QE2C4"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    // Nav logic
+    function updateNav(user) {
+      const nav = document.getElementById('navLinks');
+      if (user) {
+        nav.innerHTML = `
+          <a href="materials.html">Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" class="cart-icon" title="Cart">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+              <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+              <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+              <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <span class="profile-avatar" id="profileBtn" title="Profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+          </span>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="profile.html">My Profile</a>
+            <a href="orders.html">My Orders</a>
+            <a href="#" id="logoutLink">Log Out</a>
+          </div>
+        `;
+        setTimeout(() => {
+          document.getElementById('profileBtn').onclick = function(e){
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+            dropdown.style.flexDirection = 'column';
+            e.stopPropagation();
+          };
+          window.addEventListener('click',()=>{ const d=document.getElementById('profileDropdown');if(d)d.style.display='none'; });
+          document.getElementById('profileDropdown').onclick = e=>e.stopPropagation();
+          document.getElementById('logoutLink').onclick = function(e){
+            e.preventDefault(); signOut(auth).then(()=>window.location.reload());
+          };
+        }, 100);
+      } else {
+        nav.innerHTML = `
+          <a href="materials.html">Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" class="cart-icon" title="Cart">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+              <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+              <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+              <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <span class="profile-avatar" id="profileBtn" title="Profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+          </span>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="login.html">Sign In</a>
+            <a href="create-account.html">Create Account</a>
+          </div>
+        `;
+        setTimeout(() => {
+          document.getElementById('profileBtn').onclick = function(e){
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+            dropdown.style.flexDirection = 'column';
+            e.stopPropagation();
+          };
+          window.addEventListener('click',()=>{ const d=document.getElementById('profileDropdown');if(d)d.style.display='none'; });
+          document.getElementById('profileDropdown').onclick = e=>e.stopPropagation();
+        }, 100);
+      }
+    }
+    onAuthStateChanged(auth, user => { updateNav(user); });
+
+    // Login Form logic
+    window.addEventListener("DOMContentLoaded", function(){
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      document.querySelector('.account-form').onsubmit = async function(e){
+        e.preventDefault();
+        document.getElementById('pwError').innerText = '';
+        try {
+          await signInWithEmailAndPassword(auth, email.value, password.value);
+          window.location = "index.html";
+        } catch (err) {
+          document.getElementById('pwError').innerText = err.message.replace("Firebase: ", "");
+        }
+      }
+    });
+  </script>
 </head>
 <body>
   <header>
     <a href="welcome.html" class="brand" style="text-decoration:none;">
       <span style="display:inline-block;vertical-align:middle;margin-right:13px;">
-        <!-- Logo SVG -->
         <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
           <path d="M12 14L24 8L36 14V28L24 34L12 28V14Z" fill="#1ABC9C" stroke="#0F4C5C" stroke-width="2"/>
           <path d="M12 14L24 20L24 34L12 28V14Z" fill="#22B9AD" stroke="#0F4C5C" stroke-width="2"/>
@@ -160,52 +161,25 @@
       </span>
       PrintCraft
     </a>
-    <nav>
-      <a href="materials.html">Materials</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
-      <a href="index.html">
-        <button class="get-started-btn">Get Started</button>
-      </a>
-      <!-- Orange Cart Icon -->
-      <a href="cart.html" class="cart-icon" title="Cart">
-        <svg viewBox="0 0 24 24">
-          <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
-          <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
-          <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
-          <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
-        </svg>
-      </a>
-      <span class="profile-avatar" id="profileBtn" title="Profile">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
-      </span>
-      <div class="profile-dropdown" id="profileDropdown">
-        <a href="profile.html">My Profile</a>
-        <a href="orders.html">My Orders</a>
-        <a href="#" onclick="logout();return false;">Log Out</a>
-      </div>
+    <nav id="navLinks">
+      <!-- Nav will be rendered by JS -->
     </nav>
   </header>
-
-  <div class="login-main">
-    <div class="login-card">
-      <div class="login-title">Sign In</div>
-      <form class="login-form" autocomplete="off" onsubmit="return false;">
-        <label for="email">Email address</label>
-        <input class="login-input" id="email" name="email" type="email" required placeholder="Email address" autocomplete="username">
-        <label for="password">Password</label>
-        <input class="login-input" id="password" name="password" type="password" required placeholder="Password" autocomplete="current-password">
-        <button class="login-btn" type="submit">Log In</button>
-        <div class="login-actions">
-          <a href="#" class="login-link" onclick="alert('Reset password flow!');return false;">Forgot password?</a>
-        </div>
-      </form>
-      <div class="login-footer">
-        Don’t have an account? <a href="create-account.html">Create one</a>
-      </div>
+  <div class="account-card">
+    <div class="account-title">Sign In</div>
+    <form class="account-form" autocomplete="off" onsubmit="return false;">
+      <div class="form-label">Email address</div>
+      <input type="email" class="form-input" id="email" placeholder="Email address" autocomplete="username" required>
+      <div class="form-label">Password</div>
+      <input type="password" class="form-input" id="password" placeholder="Password" autocomplete="current-password" required>
+      <div class="error-msg" id="pwError"></div>
+      <button class="account-btn" id="signInBtn" type="submit">Sign In</button>
+    </form>
+    <div class="account-footer">
+      Don’t have an account?
+      <a href="create-account.html">Create Account</a>
     </div>
   </div>
-
   <footer>
     <div class="footer-links">
       <a href="materials.html">Materials</a>
@@ -220,18 +194,5 @@
       <a href="#" title="Instagram">📸</a>
     </div>
   </footer>
-  <script>
-    // Profile dropdown logic
-    const btn = document.getElementById('profileBtn');
-    const dropdown = document.getElementById('profileDropdown');
-    btn.onclick = function(e){
-      dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
-      dropdown.style.flexDirection = 'column';
-      e.stopPropagation();
-    };
-    window.addEventListener('click',()=>dropdown.style.display='none');
-    dropdown.onclick = e=>e.stopPropagation();
-    function logout() { alert('Logged out! (This is just a demo.)'); }
-  </script>
 </body>
 </html>
