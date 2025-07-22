@@ -15,22 +15,18 @@
     nav a:hover { color:var(--main);}
     .get-started-btn {background:#ff7f32;color:#fff;border:none;border-radius:8px;padding:8px 23px;font-weight:700;font-size:1.13rem;cursor:pointer;transition:background .16s;}
     .get-started-btn:hover { background: var(--cta-hover);}
-    .profile-avatar { background:#e3f5f5;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:26px;transition:box-shadow 0.15s;}
+    .cart-icon { background: #e3f5f5; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-left: 18px; transition: box-shadow 0.15s;}
+    .cart-icon svg { width: 24px; height: 24px;}
+    .profile-avatar { background:#e3f5f5;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:18px;transition:box-shadow 0.15s;}
     .profile-avatar svg {width:27px;height:27px;fill:#18787c;}
     .profile-dropdown { position:absolute; top:70px; right:42px; background:#fff; border-radius:11px; box-shadow:0 2px 18px rgba(17,50,56,0.13); min-width:183px; z-index:99; display:none; flex-direction:column;}
     .profile-dropdown a { color:#222; text-decoration:none; font-weight:500; font-size:1.09em; padding:15px 21px; transition:background .14s;}
     .profile-dropdown a:hover { background:#f2f7f7;}
-    .account-card {
-      background:#fff; border-radius:17px; box-shadow:0 2px 16px rgba(17,50,56,0.09);
-      max-width:400px; margin:58px auto 48px auto; padding:39px 32px 32px 32px;
-      display:flex;flex-direction:column;align-items:center;
-    }
+    .account-card { background:#fff; border-radius:17px; box-shadow:0 2px 16px rgba(17,50,56,0.09); max-width:400px; margin:58px auto 48px auto; padding:39px 32px 32px 32px; display:flex;flex-direction:column;align-items:center;}
     .account-title {font-size:2rem;font-weight:800;margin-bottom:12px;}
     .account-form {width:100%;margin-top:9px;}
     .form-label {font-weight:600;margin-bottom:6px;font-size:1.08em;}
-    .form-input {
-      width:100%; font-size:1.14em; border:1.4px solid #d7e6e3; border-radius:7px; padding:15px 13px; margin-bottom:16px; outline:none; background:#fafcff; transition:border .15s;
-    }
+    .form-input { width:100%; font-size:1.14em; border:1.4px solid #d7e6e3; border-radius:7px; padding:15px 13px; margin-bottom:16px; outline:none; background:#fafcff; transition:border .15s;}
     .form-input:focus { border-color: #1abc9c;}
     .account-btn {background:#1abc9c;color:#fff;border:none;border-radius:8px;width:100%;font-weight:700;font-size:1.14rem;padding:14px 0;margin-top:8px;cursor:pointer;transition:background .14s;}
     .account-btn:disabled {opacity:0.62; cursor:not-allowed;}
@@ -51,12 +47,138 @@
     .footer-social a:hover { color: #15b6a4;}
     footer { background: #fff; margin-top: 42px; padding: 17px 9px 12px 9px; font-size: 1rem; color: #476360; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #e6ebe8; gap: 10px; max-width: 1000px; margin-left:auto; margin-right:auto; border-radius: 0 0 14px 14px;}
   </style>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyANZVgsmZFspViu6tvkdnJF_Om7hJqywyU",
+      authDomain: "printcraft-90c28.firebaseapp.com",
+      projectId: "printcraft-90c28",
+      storageBucket: "printcraft-90c28.appspot.com",
+      messagingSenderId: "533146505328",
+      appId: "1:533146505328:web:3d38075160998042d424b5",
+      measurementId: "G-YHFN7QE2C4"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    // Nav logic
+    function updateNav(user) {
+      const nav = document.getElementById('navLinks');
+      if (user) {
+        nav.innerHTML = `
+          <a href="materials.html">Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" class="cart-icon" title="Cart">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+              <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+              <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+              <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <span class="profile-avatar" id="profileBtn" title="Profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+          </span>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="profile.html">My Profile</a>
+            <a href="orders.html">My Orders</a>
+            <a href="#" id="logoutLink">Log Out</a>
+          </div>
+        `;
+        setTimeout(() => {
+          document.getElementById('profileBtn').onclick = function(e){
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+            dropdown.style.flexDirection = 'column';
+            e.stopPropagation();
+          };
+          window.addEventListener('click',()=>{ const d=document.getElementById('profileDropdown');if(d)d.style.display='none'; });
+          document.getElementById('profileDropdown').onclick = e=>e.stopPropagation();
+          document.getElementById('logoutLink').onclick = function(e){
+            e.preventDefault(); signOut(auth).then(()=>window.location.reload());
+          };
+        }, 100);
+      } else {
+        nav.innerHTML = `
+          <a href="materials.html">Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" class="cart-icon" title="Cart">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+              <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+              <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+              <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <span class="profile-avatar" id="profileBtn" title="Profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+          </span>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="login.html">Sign In</a>
+            <a href="create-account.html">Create Account</a>
+          </div>
+        `;
+        setTimeout(() => {
+          document.getElementById('profileBtn').onclick = function(e){
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+            dropdown.style.flexDirection = 'column';
+            e.stopPropagation();
+          };
+          window.addEventListener('click',()=>{ const d=document.getElementById('profileDropdown');if(d)d.style.display='none'; });
+          document.getElementById('profileDropdown').onclick = e=>e.stopPropagation();
+        }, 100);
+      }
+    }
+    onAuthStateChanged(auth, user => { updateNav(user); });
+
+    // Form validation and submission
+    window.addEventListener("DOMContentLoaded", function(){
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const rules = [
+        { test: s=>/^.{8,12}$/.test(s), el: document.getElementById('r1') },
+        { test: s=>/[A-Z]/.test(s), el: document.getElementById('r2') },
+        { test: s=>/[\d\W_]/.test(s), el: document.getElementById('r3') }
+      ];
+      password.oninput = function() {
+        let v = password.value, ok = true;
+        rules.forEach(r=>{
+          let valid = r.test(v);
+          r.el.className = 'pw-rule ' + (valid?'valid':'invalid');
+          if(!valid) ok = false;
+        });
+        document.getElementById('createBtn').disabled = !ok;
+        document.getElementById('pwError').innerText = '';
+      };
+      document.querySelector('.account-form').onsubmit = async function(e){
+        e.preventDefault();
+        let allOk = rules.every(r=>r.test(password.value));
+        if(!allOk) {
+          document.getElementById('pwError').innerText = "Password doesn't meet requirements.";
+          return false;
+        }
+        document.getElementById('createBtn').disabled = true;
+        document.getElementById('pwError').innerText = '';
+        try {
+          await createUserWithEmailAndPassword(auth, email.value, password.value);
+          window.location = "index.html";
+        } catch (err) {
+          document.getElementById('pwError').innerText = err.message.replace("Firebase: ", "");
+        }
+        document.getElementById('createBtn').disabled = false;
+      }
+    });
+  </script>
 </head>
 <body>
   <header>
     <a href="welcome.html" class="brand" style="text-decoration:none;">
       <span style="display:inline-block;vertical-align:middle;margin-right:13px;">
-        <!-- Logo SVG -->
         <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
           <path d="M12 14L24 8L36 14V28L24 34L12 28V14Z" fill="#1ABC9C" stroke="#0F4C5C" stroke-width="2"/>
           <path d="M12 14L24 20L24 34L12 28V14Z" fill="#22B9AD" stroke="#0F4C5C" stroke-width="2"/>
@@ -65,18 +187,8 @@
       </span>
       PrintCraft
     </a>
-    <nav>
-      <a href="materials.html">Materials</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
-      <a href="index.html" style="margin-left:20px;"><button class="get-started-btn">Get Started</button></a>
-      <span class="profile-avatar" id="profileBtn" title="Profile">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
-      </span>
-      <div class="profile-dropdown" id="profileDropdown">
-        <a href="login.html">Sign In</a>
-        <a href="create-account.html">Create Account</a>
-      </div>
+    <nav id="navLinks">
+      <!-- Nav will be rendered by JS -->
     </nav>
   </header>
   <div class="account-card">
@@ -113,45 +225,5 @@
       <a href="#" title="Instagram">📸</a>
     </div>
   </footer>
-  <script>
-    // Profile dropdown
-    const btn = document.getElementById('profileBtn');
-    const dropdown = document.getElementById('profileDropdown');
-    btn.onclick = function(e){
-      dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
-      dropdown.style.flexDirection = 'column';
-      e.stopPropagation();
-    };
-    window.addEventListener('click',()=>dropdown.style.display='none');
-    dropdown.onclick = e=>e.stopPropagation();
-
-    // Password rules
-    const pw = document.getElementById('password');
-    const rules = [
-      { test: s=>/^.{8,12}$/.test(s), el: document.getElementById('r1') },
-      { test: s=>/[A-Z]/.test(s), el: document.getElementById('r2') },
-      { test: s=>/[\d\W_]/.test(s), el: document.getElementById('r3') }
-    ];
-    pw.oninput = function() {
-      let v = pw.value, ok = true;
-      rules.forEach(r=>{
-        let valid = r.test(v);
-        r.el.className = 'pw-rule ' + (valid?'valid':'invalid');
-        if(!valid) ok = false;
-      });
-      document.getElementById('createBtn').disabled = !ok;
-      document.getElementById('pwError').innerText = '';
-    };
-    // Demo create account
-    document.querySelector('.account-form').onsubmit = function(){
-      let allOk = rules.every(r=>r.test(pw.value));
-      if(!allOk) {
-        document.getElementById('pwError').innerText = "Password doesn't meet requirements.";
-        return false;
-      }
-      alert('Account created! Redirecting to homepage...');
-      window.location = "welcome.html";
-    }
-  </script>
 </body>
 </html>
