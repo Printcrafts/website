@@ -6,150 +6,202 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --main: #1abc9c;
-      --cta: #ff7f32;
-      --cta-hover: #f46a15;
-      --bg: #f8f9fa;
-      --dark: #163447;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: var(--bg);
-      color: var(--dark);
-    }
-    header {
-      background: #fff;
-      box-shadow: 0 2px 18px rgba(17,50,56,0.10);
-      border-radius: 18px;
-      margin: 18px auto 0 auto;
-      max-width: 1080px;
-      padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      min-height: 76px;
-    }
-    .brand {
-      font-size: 2rem; font-weight: 700; color: #1abc9c;
-      display: flex; align-items: center; text-decoration: none;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      font-size: 1.09rem;
-      gap: 0;
-    }
-    nav a { color: #21293a; text-decoration: none; font-weight: 500; margin-left: 32px; }
-    nav a:first-child { margin-left: 0; }
-    nav a:hover { color: var(--main); }
-    .get-started-btn {
-      background: var(--cta); color: #fff; border: none; border-radius: 8px;
-      padding: 8px 23px; font-weight: 700; font-size: 1.13rem;
-      cursor: pointer; transition: background .16s;
-      margin-left: 28px;
-    }
-    .get-started-btn:hover { background: var(--cta-hover); }
-    .cart-icon {
-      background: #e3f5f5;
-      border-radius: 50%;
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; margin-left: 12px;
-      transition: box-shadow 0.15s;
-    }
-    .cart-icon svg {
-      width: 24px; height: 24px;
-    }
-    .profile-avatar {
-      background: #e3f5f5;
-      border-radius: 50%;
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; margin-left: 12px;
-      transition: box-shadow 0.15s;
-    }
-    .profile-avatar svg {
-      width: 27px; height: 27px; fill: #18787c;
-    }
-    .profile-dropdown {
-      position: absolute; top: 70px; right: 42px; background: #fff;
-      border-radius: 11px; box-shadow: 0 2px 18px rgba(17,50,56,0.13);
-      min-width: 183px; z-index: 99; display: none; flex-direction: column;
-    }
-    .profile-dropdown a {
-      color: #222; text-decoration: none; font-weight: 500; font-size: 1.09em;
-      padding: 15px 21px; transition: background .14s;
-    }
-    .profile-dropdown a:hover { background: #f2f7f7; }
-    .cart-main {
-      max-width: 670px;
-      margin: 48px auto 0 auto;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 2px 16px rgba(17,50,56,0.09);
-      padding: 38px 33px 34px 33px;
-    }
-    .cart-title {
-      font-size: 2.1rem;
-      font-weight: 800;
-      margin-bottom: 25px;
-      letter-spacing: -1px;
-      text-align: center;
-    }
-    .cart-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 12px;
-      margin-bottom: 32px;
-    }
-    .cart-table th, .cart-table td {
-      font-size: 1.08em;
-      text-align: left;
-      padding: 8px 11px;
-    }
-    .cart-table th {
-      color: #294952;
-      font-size: 1.13em;
-      font-weight: 800;
-      background: #f7fafc;
-    }
-    .cart-row {
-      background: #fafdff;
-      border-radius: 9px;
-    }
-    .cart-thumb {
-      width: 58px; height: 58px; object-fit: cover; border-radius: 7px; border: 1.1px solid #e5e6ec;
-      margin-right: 7px;
-    }
-    .cart-empty {
-      color: #888;
-      text-align: center;
-      padding: 37px 0 37px 0;
-      font-size: 1.17rem;
-    }
-    .cart-checkout-btn {
-      background: #ff7f32; color: #fff; border: none; border-radius: 8px;
-      width: 100%; font-weight: 700; font-size: 1.19rem; padding: 16px 0; margin-top: 12px;
-      cursor: pointer; transition: background .14s;
-      box-shadow: 0 1.5px 10px 0 rgba(255,127,50,0.13);
-    }
-    .cart-checkout-btn:hover { background: #f46a15; }
-    @media (max-width:700px){
-      .cart-main { padding: 18px 2vw 18px 2vw; }
-    }
+    :root { --main: #1abc9c; --cta: #ff7f32; --cta-hover: #f46a15; }
+    body { font-family: 'Inter',sans-serif; margin:0; background: #fafbfc; color: #182133;}
+    header { background:#fff; box-shadow:0 2px 18px rgba(17,50,56,0.10); border-radius:18px; margin:18px auto 0 auto; max-width:1080px; padding:0 24px; display:flex;align-items:center;justify-content:space-between; min-height:76px;}
+    .brand { font-size:2rem; font-weight:700; color:#1abc9c; display:flex; align-items:center; text-decoration:none;}
+    nav { display:flex; gap:32px; align-items:center; font-size:1.09rem;}
+    nav a { color:#21293a; text-decoration:none; font-weight:500;}
+    nav a:hover { color:var(--main);}
+    .get-started-btn {background:#ff7f32;color:#fff;border:none;border-radius:8px;padding:8px 23px;font-weight:700;font-size:1.13rem;cursor:pointer;transition:background .16s;}
+    .get-started-btn:hover { background: var(--cta-hover);}
+    .cart-icon { background: #e3f5f5; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-left: 18px; transition: box-shadow 0.15s;}
+    .cart-icon svg { width: 24px; height: 24px;}
+    .profile-avatar { background:#e3f5f5;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:18px;transition:box-shadow 0.15s;}
+    .profile-avatar svg {width:27px;height:27px;fill:#18787c;}
+    .profile-dropdown { position:absolute; top:70px; right:42px; background:#fff; border-radius:11px; box-shadow:0 2px 18px rgba(17,50,56,0.13); min-width:183px; z-index:99; display:none; flex-direction:column;}
+    .profile-dropdown a { color:#222; text-decoration:none; font-weight:500; font-size:1.09em; padding:15px 21px; transition:background .14s;}
+    .profile-dropdown a:hover { background:#f2f7f7;}
+    .cart-wrap { background:#fff; border-radius:14px; box-shadow:0 2px 16px rgba(17,50,56,0.09); max-width:650px; margin:54px auto 0 auto; padding:39px 32px 32px 32px;}
+    .cart-title {font-size:2rem;font-weight:800;margin-bottom:12px;}
+    .cart-table { width:100%; border-collapse:collapse; margin-top:19px;}
+    .cart-table th, .cart-table td { text-align:left; padding:10px 9px; border-bottom:1px solid #eee;}
+    .cart-table th { font-weight:700; background:#f7f7fa;}
+    .cart-table tr:last-child td { border-bottom:none;}
+    .cart-remove { color: #ff7f32; cursor:pointer; text-decoration:underline;}
+    .cart-remove:hover { color: #b34416;}
+    .cart-empty {color:#bbb; font-size:1.14em; text-align:center; padding:30px;}
+    .cart-footer {margin-top:22px;text-align:right;}
+    .checkout-btn {background:#ff7f32;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:1.16rem;padding:12px 34px;cursor:pointer;transition:background .14s;}
+    .checkout-btn:hover {background:#f46a15;}
     .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap;}
     .footer-links a { color: #377569; text-decoration: none; font-weight: 500;}
     .footer-links a:hover { text-decoration: underline;}
     .footer-social a { color: #119e8f; font-size: 1.15rem; margin-left: 12px; text-decoration: none;}
     .footer-social a:hover { color: #15b6a4;}
     footer { background: #fff; margin-top: 42px; padding: 17px 9px 12px 9px; font-size: 1rem; color: #476360; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #e6ebe8; gap: 10px; max-width: 1000px; margin-left:auto; margin-right:auto; border-radius: 0 0 14px 14px;}
+    @media (max-width:600px){.cart-wrap{padding:18px 2vw;}}
   </style>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    // If you want cloud cart: import Firestore, else use local/sessionStorage for guest.
+    // For demo: using localStorage only (change to Firestore for persistent login cart).
+    // TODO: Replace with Firestore "carts" collection for authenticated users if desired.
+
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyANZVgsmZFspViu6tvkdnJF_Om7hJqywyU",
+      authDomain: "printcraft-90c28.firebaseapp.com",
+      projectId: "printcraft-90c28",
+      storageBucket: "printcraft-90c28.appspot.com",
+      messagingSenderId: "533146505328",
+      appId: "1:533146505328:web:3d38075160998042d424b5",
+      measurementId: "G-YHFN7QE2C4"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    // Nav logic (same as others)
+    function updateNav(user) {
+      const nav = document.getElementById('navLinks');
+      if (user) {
+        nav.innerHTML = `
+          <a href="materials.html">Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" class="cart-icon" title="Cart">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+              <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+              <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+              <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <span class="profile-avatar" id="profileBtn" title="Profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+          </span>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="profile.html">My Profile</a>
+            <a href="orders.html">My Orders</a>
+            <a href="#" id="logoutLink">Log Out</a>
+          </div>
+        `;
+        setTimeout(() => {
+          document.getElementById('profileBtn').onclick = function(e){
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+            dropdown.style.flexDirection = 'column';
+            e.stopPropagation();
+          };
+          window.addEventListener('click',()=>{ const d=document.getElementById('profileDropdown');if(d)d.style.display='none'; });
+          document.getElementById('profileDropdown').onclick = e=>e.stopPropagation();
+          document.getElementById('logoutLink').onclick = function(e){
+            e.preventDefault(); signOut(auth).then(()=>window.location="login.html");
+          };
+        }, 100);
+      } else {
+        nav.innerHTML = `
+          <a href="materials.html">Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html" class="cart-icon" title="Cart">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
+              <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
+              <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+              <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <span class="profile-avatar" id="profileBtn" title="Profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
+          </span>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="login.html">Sign In</a>
+            <a href="create-account.html">Create Account</a>
+          </div>
+        `;
+        setTimeout(() => {
+          document.getElementById('profileBtn').onclick = function(e){
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
+            dropdown.style.flexDirection = 'column';
+            e.stopPropagation();
+          };
+          window.addEventListener('click',()=>{ const d=document.getElementById('profileDropdown');if(d)d.style.display='none'; });
+          document.getElementById('profileDropdown').onclick = e=>e.stopPropagation();
+        }, 100);
+      }
+    }
+
+    // Cart logic: guest uses localStorage, user uses localStorage (optionally sync with DB if you want)
+    function loadCart() {
+      let cart = [];
+      try {
+        cart = JSON.parse(localStorage.getItem('cart') || "[]");
+      } catch {}
+      return Array.isArray(cart) ? cart : [];
+    }
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    function renderCart() {
+      const cart = loadCart();
+      const cartContent = document.getElementById('cartContent');
+      if (!cart.length) {
+        cartContent.innerHTML = `<div class="cart-empty">Your cart is empty.<br><a href="index.html" class="order-link">Add a 3D file to get started!</a></div>`;
+        return;
+      }
+      let total = 0;
+      let rows = '';
+      cart.forEach((item,i) => {
+        total += item.total || 0;
+        rows += `<tr>
+          <td>${item.material}</td>
+          <td>${item.colors ? item.colors.join(", ") : ""}</td>
+          <td>${item.grams ? item.grams+"g" : ""}</td>
+          <td>$${item.total ? item.total.toFixed(2) : ""}</td>
+          <td><span class="cart-remove" data-i="${i}">Remove</span></td>
+        </tr>`;
+      });
+      cartContent.innerHTML = `
+        <table class="cart-table">
+          <tr>
+            <th>Material</th>
+            <th>Colors</th>
+            <th>Grams</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+          ${rows}
+        </table>
+        <div class="cart-footer">
+          <b>Total: $${total.toFixed(2)}</b>
+          <a href="checkout.html"><button class="checkout-btn">Checkout</button></a>
+        </div>
+      `;
+      // Remove logic
+      Array.from(document.querySelectorAll('.cart-remove')).forEach(el=>{
+        el.onclick = function() {
+          const i = +el.getAttribute('data-i');
+          const cart = loadCart();
+          cart.splice(i,1);
+          saveCart(cart);
+          renderCart();
+        }
+      });
+    }
+
+    onAuthStateChanged(auth, user => {
+      updateNav(user);
+      renderCart();
+    });
+  </script>
 </head>
 <body>
   <header>
     <a href="welcome.html" class="brand" style="text-decoration:none;">
       <span style="display:inline-block;vertical-align:middle;margin-right:13px;">
-        <!-- Logo SVG -->
         <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
           <path d="M12 14L24 8L36 14V28L24 34L12 28V14Z" fill="#1ABC9C" stroke="#0F4C5C" stroke-width="2"/>
           <path d="M12 14L24 20L24 34L12 28V14Z" fill="#22B9AD" stroke="#0F4C5C" stroke-width="2"/>
@@ -158,68 +210,16 @@
       </span>
       PrintCraft
     </a>
-    <nav>
-      <a href="materials.html">Materials</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
-      <a href="index.html">
-        <button class="get-started-btn">Get Started</button>
-      </a>
-      <!-- Orange Cart Icon -->
-      <a href="cart.html" class="cart-icon" title="Cart">
-        <svg viewBox="0 0 24 24">
-          <circle cx="9" cy="20" r="1.6" fill="#ff7f32"/>
-          <circle cx="18" cy="20" r="1.6" fill="#ff7f32"/>
-          <path d="M3 4h2l2.1 12.3a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 2-1.6l1.5-7.7H6.1" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
-          <polyline points="6 7 22 7" fill="none" stroke="#ff7f32" stroke-width="1.8"/>
-        </svg>
-      </a>
-      <span class="profile-avatar" id="profileBtn" title="Profile">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="9.1" r="4.4"/><ellipse cx="12" cy="17.1" rx="7.3" ry="4.6"/></svg>
-      </span>
-      <div class="profile-dropdown" id="profileDropdown">
-        <a href="profile.html">My Profile</a>
-        <a href="orders.html">My Orders</a>
-        <a href="#" onclick="logout();return false;">Log Out</a>
-      </div>
+    <nav id="navLinks">
+      <!-- Nav will be rendered by JS -->
     </nav>
   </header>
-
-  <div class="cart-main">
+  <div class="cart-wrap">
     <div class="cart-title">Your Cart</div>
-    <table class="cart-table">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Material</th>
-          <th>Color</th>
-          <th>Grams</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Example row, replace with dynamic content -->
-        <tr class="cart-row">
-          <td>
-            <div style="display:flex;align-items:center;">
-              <img src="https://cdn-icons-png.flaticon.com/512/1163/1163657.png" class="cart-thumb" alt="Item"/>
-              Cube.obj
-            </div>
-          </td>
-          <td>PLA</td>
-          <td>Red</td>
-          <td>25</td>
-          <td>$16.50</td>
-        </tr>
-        <!-- Uncomment below if cart is empty -->
-        <!--
-        <tr><td colspan="5" class="cart-empty">Your cart is empty.</td></tr>
-        -->
-      </tbody>
-    </table>
-    <a href="checkout.html"><button class="cart-checkout-btn">Checkout</button></a>
+    <div id="cartContent">
+      <!-- Cart items rendered by JS -->
+    </div>
   </div>
-
   <footer>
     <div class="footer-links">
       <a href="materials.html">Materials</a>
@@ -234,18 +234,5 @@
       <a href="#" title="Instagram">📸</a>
     </div>
   </footer>
-  <script>
-    // Profile dropdown
-    const btn = document.getElementById('profileBtn');
-    const dropdown = document.getElementById('profileDropdown');
-    btn.onclick = function(e){
-      dropdown.style.display = dropdown.style.display==='flex'?'none':'flex';
-      dropdown.style.flexDirection = 'column';
-      e.stopPropagation();
-    };
-    window.addEventListener('click',()=>dropdown.style.display='none');
-    dropdown.onclick = e=>e.stopPropagation();
-    function logout() { alert('Logged out! (This is just a demo.)'); }
-  </script>
 </body>
 </html>
